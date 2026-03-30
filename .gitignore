@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.storybook-static/
+storybook-static/
+coverage/
+*.tgz
+.DS_Store
+.env
+.env.local

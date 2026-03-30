@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gravity Admin — BBSA-Inspired Theme Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* ═══ BBSA-Inspired Financial Palette ═══ */
+
+    /* Primary — Deep Navy (trust, authority) */
+    --primary: #003973;
+    --primary-hover: #004A94;
+    --primary-light: #E8F0FA;
+    --primary-lighter: #F2F7FC;
+    --primary-dark: #002B57;
+    --primary-glow: rgba(0, 57, 115, 0.12);
+    --primary-shadow: rgba(0, 57, 115, 0.20);
+
+    /* Accent — Bright Cyan (modern, action) */
+    --accent: #00BBDD;
+    --accent-hover: #00D4FA;
+    --accent-light: #E5F9FD;
+    --accent-dark: #009BB8;
+    --accent-glow: rgba(0, 187, 221, 0.15);
+
+    /* Highlight — Electric Blue */
+    --highlight: #0077FF;
+    --highlight-light: #EBF4FF;
+
+    /* Sidebar — Deep dark navy */
+    --sidebar-bg: #001224;
+    --sidebar-bg-end: #001A33;
+    --sidebar-border: rgba(0, 187, 221, 0.08);
+    --sidebar-text: rgba(255,255,255,0.45);
+    --sidebar-text-hover: rgba(255,255,255,0.85);
+    --sidebar-text-active: #FFFFFF;
+    --sidebar-item-active-bg: rgba(0, 187, 221, 0.12);
+    --sidebar-item-hover-bg: rgba(255,255,255,0.04);
+    --sidebar-accent-bar: #00BBDD;
+
+    /* Surfaces */
+    --bg: #F0F3F7;
+    --card-bg: #FFFFFF;
+    --elevated-bg: #FFFFFF;
+
+    /* Text — Navy-tinted grays */
+    --text-primary: #0D1B2A;
+    --text-secondary: #3D5068;
+    --text-muted: #8494A7;
+    --text-faint: #B8C4D0;
+
+    /* Borders */
+    --border: #D5DCE5;
+    --border-light: #E8EDF2;
+
+    /* Semantic */
+    --success: #00B67A;
+    --success-light: #E6F9F2;
+    --warning: #F5A623;
+    --warning-light: #FFF8ED;
+    --error: #E62626;
+    --error-light: #FEF0F0;
+    --info: #0077FF;
+    --info-light: #EBF4FF;
+
+    /* Shadows — Cool, navy-tinted */
+    --shadow-xs: 0 0 0 1px rgba(0,25,51,0.04);
+    --shadow-sm: 0 1px 3px rgba(0,25,51,0.05), 0 0 0 1px rgba(0,25,51,0.03);
+    --shadow-md: 0 4px 12px -2px rgba(0,25,51,0.08), 0 0 0 1px rgba(0,25,51,0.03);
+    --shadow-lg: 0 8px 24px -4px rgba(0,25,51,0.12), 0 0 0 1px rgba(0,25,51,0.03);
+    --shadow-xl: 0 20px 48px -8px rgba(0,25,51,0.16), 0 0 0 1px rgba(0,25,51,0.03);
+
+    /* Radii */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+
+    /* Font */
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-primary);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ─── Layout ────────────────────────────── */
+  .app-shell { display: flex; min-height: 100vh; }
+
+  /* ─── Sidebar ───────────────────────────── */
+  .sidebar {
+    width: 260px;
+    background: linear-gradient(180deg, var(--sidebar-bg) 0%, var(--sidebar-bg-end) 100%);
+    border-right: 1px solid var(--sidebar-border);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 50;
+    overflow-y: auto;
+  }
+
+  .sidebar-logo {
+    height: 68px;
+    padding: 0 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(0,187,221,0.06);
+  }
+
+  .sidebar-logo-icon {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, #00BBDD 0%, #0077FF 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 15px;
+    color: #FFF;
+    letter-spacing: -0.03em;
+    box-shadow: 0 2px 8px rgba(0, 187, 221, 0.30);
+  }
+
+  .sidebar-logo-text {
+    font-size: 17px;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: -0.02em;
+  }
+
+  .sidebar-logo-badge {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--accent);
+    background: rgba(0, 187, 221, 0.12);
+    padding: 2px 7px;
+    border-radius: 4px;
+    letter-spacing: 0.03em;
+    margin-left: auto;
+  }
+
+  .sidebar-section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.22);
+    padding: 24px 22px 8px;
+  }
+
+  .sidebar-nav { padding: 14px 12px; flex: 1; }
+
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 9px 14px;
+    border-radius: var(--radius-md);
+    color: var(--sidebar-text);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    position: relative;
+    margin-bottom: 2px;
+  }
+  .sidebar-item:hover {
+    background: var(--sidebar-item-hover-bg);
+    color: var(--sidebar-text-hover);
+  }
+  .sidebar-item.active {
+    background: var(--sidebar-item-active-bg);
+    color: var(--sidebar-text-active);
+  }
+  .sidebar-item.active::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 22px;
+    background: linear-gradient(180deg, #00BBDD, #0077FF);
+    border-radius: 0 3px 3px 0;
+  }
+  .sidebar-item svg {
+    width: 18px;
+    height: 18px;
+    opacity: 0.65;
+    flex-shrink: 0;
+  }
+  .sidebar-item.active svg { opacity: 1; }
+
+  .sidebar-item-badge {
+    margin-left: auto;
+    font-size: 11px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #00BBDD, #0077FF);
+    color: #FFF;
+    padding: 1px 8px;
+    border-radius: 10px;
+    min-width: 22px;
+    text-align: center;
+  }
+
+  .sidebar-footer {
+    padding: 16px 14px;
+    border-top: 1px solid rgba(0,187,221,0.06);
+  }
+
+  .sidebar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .sidebar-user:hover { background: var(--sidebar-item-hover-bg); }
+
+  .sidebar-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #003973, #00BBDD);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: #FFF;
+    flex-shrink: 0;
+  }
+
+  .sidebar-user-name { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.9); }
+  .sidebar-user-role { font-size: 11px; color: rgba(255,255,255,0.35); font-weight: 500; }
+
+  /* ─── Main ──────────────────────────────── */
+  .main {
+    flex: 1;
+    margin-left: 260px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header {
+    height: 68px;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    box-shadow: 0 1px 0 rgba(0,25,51,0.04);
+  }
+
+  .header-left { display: flex; align-items: center; gap: 16px; }
+
+  .header-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .header-breadcrumb span { color: var(--text-primary); font-weight: 500; }
+
+  .header-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s;
+    min-width: 240px;
+  }
+  .header-search:hover { border-color: #B8C4D0; }
+
+  .header-search kbd {
+    font-family: var(--font);
+    font-size: 11px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 1px 5px;
+    border-radius: 4px;
+    margin-left: auto;
+    color: var(--text-faint);
+  }
+
+  .header-right { display: flex; align-items: center; gap: 4px; }
+
+  .header-icon-btn {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: all 0.15s;
+    border: none;
+    background: none;
+  }
+  .header-icon-btn:hover { background: var(--bg); color: var(--text-secondary); }
+  .header-icon-btn svg { width: 18px; height: 18px; }
+
+  .header-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #003973, #00BBDD);
+    margin-left: 8px;
+    cursor: pointer;
+  }
+
+  .notif-dot { position: relative; }
+  .notif-dot::after {
+    content: '';
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 7px;
+    height: 7px;
+    background: var(--accent);
+    border: 2px solid var(--card-bg);
+    border-radius: 50%;
+  }
+
+  /* ─── Content ───────────────────────────── */
+  .content { padding: 32px; flex: 1; }
+
+  .page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+  }
+
+  .page-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+
+  .page-description {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* ─── Buttons ───────────────────────────── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    font-family: var(--font);
+    font-size: 13.5px;
+    font-weight: 500;
+    padding: 9px 20px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: 1px solid transparent;
+    text-decoration: none;
+    line-height: 1.4;
+  }
+  .btn svg { width: 16px; height: 16px; }
+
+  .btn-primary {
+    background: var(--primary);
+    color: #FFFFFF;
+    border-color: var(--primary);
+    box-shadow: 0 1px 3px var(--primary-shadow);
+  }
+  .btn-primary:hover {
+    background: var(--primary-hover);
+    border-color: var(--primary-hover);
+    box-shadow: 0 3px 10px var(--primary-shadow);
+    transform: translateY(-0.5px);
+  }
+
+  .btn-accent {
+    background: linear-gradient(135deg, #00BBDD 0%, #0077FF 100%);
+    color: #FFFFFF;
+    border-color: transparent;
+    box-shadow: 0 2px 8px rgba(0, 187, 221, 0.25);
+  }
+  .btn-accent:hover {
+    box-shadow: 0 4px 14px rgba(0, 187, 221, 0.35);
+    transform: translateY(-0.5px);
+  }
+
+  .btn-secondary {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    border-color: var(--border);
+    box-shadow: var(--shadow-xs);
+  }
+  .btn-secondary:hover { background: var(--bg); border-color: #B8C4D0; }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-secondary);
+  }
+  .btn-ghost:hover { background: var(--bg); color: var(--text-primary); }
+
+  .btn-danger {
+    background: var(--error);
+    color: #FFFFFF;
+    border-color: var(--error);
+    box-shadow: 0 1px 3px rgba(230, 38, 38, 0.25);
+  }
+  .btn-danger:hover { background: #C91E1E; }
+
+  .btn-sm { padding: 6px 13px; font-size: 12.5px; }
+  .btn-lg { padding: 12px 26px; font-size: 15px; }
+
+  .btn-group { display: flex; gap: 8px; }
+
+  /* ─── Stat Cards ────────────────────────── */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+
+  .stat-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 22px 24px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .stat-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .stat-card:nth-child(1)::before { background: linear-gradient(90deg, #003973, #0077FF); }
+  .stat-card:nth-child(2)::before { background: linear-gradient(90deg, #00BBDD, #00D4FA); }
+  .stat-card:nth-child(3)::before { background: linear-gradient(90deg, #00B67A, #34D399); }
+  .stat-card:nth-child(4)::before { background: linear-gradient(90deg, #F5A623, #FBBF24); }
+
+  .stat-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .stat-value-row { display: flex; align-items: baseline; gap: 4px; }
+  .stat-prefix { font-size: 18px; font-weight: 500; color: var(--text-secondary); }
+  .stat-value {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat-trend {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 8px 3px 6px;
+    border-radius: var(--radius-sm);
+  }
+  .stat-trend svg { width: 14px; height: 14px; }
+  .stat-trend.up { color: var(--success); background: var(--success-light); }
+  .stat-trend.down { color: var(--error); background: var(--error-light); }
+
+  .stat-sparkline {
+    margin-top: 14px;
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 32px;
+  }
+
+  .spark-bar {
+    flex: 1;
+    border-radius: 2px;
+    min-height: 3px;
+  }
+
+  /* ─── Cards ─────────────────────────────── */
+  .card {
+    background: var(--card-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .card-body { padding: 24px; }
+  .card-body.no-padding { padding: 0; }
+
+  /* ─── Table ─────────────────────────────── */
+  table { width: 100%; border-collapse: collapse; }
+
+  thead th {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    padding: 12px 16px;
+    text-align: left;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border-light);
+    white-space: nowrap;
+  }
+
+  tbody td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    vertical-align: middle;
+  }
+
+  tbody tr { transition: background 0.12s; }
+  tbody tr:hover { background: #F5F8FB; }
+  tbody tr:last-child td { border-bottom: none; }
+
+  .table-cell-primary { color: var(--text-primary); font-weight: 500; }
+  .table-cell-mono { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--text-primary); }
+
+  /* ─── Tags ──────────────────────────────── */
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+  .tag-dot { width: 6px; height: 6px; border-radius: 50%; }
+
+  .tag-success { background: var(--success-light); color: var(--success); }
+  .tag-success .tag-dot { background: var(--success); }
+  .tag-warning { background: var(--warning-light); color: #B07D18; }
+  .tag-warning .tag-dot { background: var(--warning); }
+  .tag-error { background: var(--error-light); color: var(--error); }
+  .tag-error .tag-dot { background: var(--error); }
+  .tag-info { background: var(--info-light); color: var(--info); }
+  .tag-info .tag-dot { background: var(--info); }
+  .tag-default { background: #EDF0F4; color: var(--text-secondary); }
+  .tag-default .tag-dot { background: var(--text-muted); }
+  .tag-primary { background: var(--primary-light); color: var(--primary); }
+  .tag-primary .tag-dot { background: var(--primary); }
+  .tag-accent { background: var(--accent-light); color: var(--accent-dark); }
+  .tag-accent .tag-dot { background: var(--accent); }
+
+  /* ─── Avatar ────────────────────────────── */
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #FFF;
+    flex-shrink: 0;
+  }
+
+  /* ─── Form Elements ─────────────────────── */
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-label { font-size: 13px; font-weight: 500; color: var(--text-primary); }
+  .form-hint { font-size: 12px; color: var(--text-muted); }
+
+  .input {
+    font-family: var(--font);
+    font-size: 14px;
+    padding: 9px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--card-bg);
+    color: var(--text-primary);
+    outline: none;
+    transition: all 0.15s;
+  }
+  .input::placeholder { color: var(--text-faint); }
+  .input:hover { border-color: #B8C4D0; }
+  .input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+
+  .select {
+    font-family: var(--font);
+    font-size: 14px;
+    padding: 9px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--card-bg);
+    color: var(--text-primary);
+    outline: none;
+    transition: all 0.15s;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='%238494A7' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+    cursor: pointer;
+  }
+  .select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+
+  .textarea {
+    font-family: var(--font);
+    font-size: 14px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--card-bg);
+    color: var(--text-primary);
+    outline: none;
+    transition: all 0.15s;
+    resize: vertical;
+    min-height: 80px;
+  }
+  .textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+
+  /* Switch */
+  .switch-wrapper { display: flex; align-items: center; gap: 10px; }
+  .switch { position: relative; width: 44px; height: 24px; cursor: pointer; }
+  .switch input { display: none; }
+  .switch-track {
+    position: absolute;
+    inset: 0;
+    background: #C2CCD6;
+    border-radius: 12px;
+    transition: background 0.2s;
+  }
+  .switch input:checked + .switch-track { background: linear-gradient(135deg, #00BBDD, #0077FF); }
+  .switch-thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    background: #FFF;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    transition: transform 0.2s;
+  }
+  .switch input:checked ~ .switch-thumb { transform: translateX(20px); }
+
+  .checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+  .checkbox-wrapper input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+    cursor: pointer;
+  }
+
+  /* ─── Section Divider ───────────────────── */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 40px 0 24px;
+  }
+  .section-divider-line { flex: 1; height: 1px; background: var(--border-light); }
+  .section-divider-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  /* ─── Grids ─────────────────────────────── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+  .bento-wide { grid-column: span 2; }
+
+  /* ─── Progress Bar ──────────────────────── */
+  .progress-bar { height: 6px; background: var(--border-light); border-radius: 3px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 3px; }
+
+  /* ─── Palette ───────────────────────────── */
+  .palette-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .palette-swatch { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .palette-color {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-md);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06);
+  }
+  .palette-hex { font-size: 11px; font-weight: 500; font-family: 'SF Mono', 'Fira Code', monospace; color: var(--text-muted); }
+  .palette-name { font-size: 11px; font-weight: 500; color: var(--text-secondary); }
+
+  /* ─── Modal Preview ─────────────────────── */
+  .modal-preview-container {
+    background: rgba(0,18,36,0.50);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-preview {
+    background: var(--card-bg);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    width: 100%;
+    max-width: 420px;
+    overflow: hidden;
+  }
+
+  .modal-preview-header {
+    padding: 24px 28px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .modal-preview-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .modal-close {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: var(--bg);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: all 0.15s;
+  }
+  .modal-close:hover { background: var(--border); color: var(--text-primary); }
+
+  .modal-preview-body { padding: 16px 28px 24px; }
+  .modal-preview-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+  .modal-preview-footer { padding: 16px 28px 24px; display: flex; justify-content: flex-end; gap: 8px; }
+
+  /* ─── Alerts ────────────────────────────── */
+  .alert {
+    display: flex;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: var(--radius-md);
+    font-size: 13.5px;
+    line-height: 1.5;
+    align-items: flex-start;
+  }
+  .alert svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }
+  .alert-success { background: var(--success-light); color: #087A55; border: 1px solid #A7F3D0; }
+  .alert-warning { background: var(--warning-light); color: #92400E; border: 1px solid #FDE68A; }
+  .alert-error { background: var(--error-light); color: var(--error); border: 1px solid #FECACA; }
+  .alert-info { background: var(--info-light); color: #1D4ED8; border: 1px solid #BFDBFE; }
+
+  /* ─── Activity Feed ─────────────────────── */
+  .activity-item {
+    display: flex;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .activity-item:last-child { border-bottom: none; }
+
+  .activity-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .activity-icon svg { width: 16px; height: 16px; }
+
+  .activity-content { flex: 1; }
+  .activity-text { font-size: 13.5px; color: var(--text-secondary); }
+  .activity-text strong { color: var(--text-primary); font-weight: 600; }
+  .activity-time { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+  /* ─── Tooltip ───────────────────────────── */
+  .tooltip-demo { position: relative; display: inline-flex; cursor: help; }
+  .tooltip-bubble {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--sidebar-bg);
+    color: #E8EDF2;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    box-shadow: var(--shadow-lg);
+  }
+  .tooltip-bubble::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--sidebar-bg);
+  }
+</style>
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- ═══ SIDEBAR ═══════════════════════════ -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">G</div>
+      <div class="sidebar-logo-text">Gravity</div>
+      <div class="sidebar-logo-badge">PRO</div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Overview</div>
+
+      <a class="sidebar-item active">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"/></svg>
+        Dashboard
+      </a>
+
+      <a class="sidebar-item">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+        Analytics
+      </a>
+
+      <a class="sidebar-item">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/></svg>
+        Portfolio
+      </a>
+
+      <div class="sidebar-section-label">Management</div>
+
+      <a class="sidebar-item">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+        Clients
+        <span class="sidebar-item-badge">18</span>
+      </a>
+
+      <a class="sidebar-item">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/></svg>
+        Transactions
+      </a>
+
+      <a class="sidebar-item">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+        Reports
+      </a>
+
+      <div class="sidebar-section-label">System</div>
+
+      <a class="sidebar-item">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        Settings
+      </a>
+
+      <a class="sidebar-item">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/></svg>
+        Notifications
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar">LB</div>
+        <div>
+          <div class="sidebar-user-name">Lucas Borella</div>
+          <div class="sidebar-user-role">Administrator</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ═══ MAIN ══════════════════════════════ -->
+  <main class="main">
+    <header class="header">
+      <div class="header-left">
+        <div class="header-breadcrumb">
+          Home <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5.25 3.5L8.75 7L5.25 10.5" stroke="#8494A7" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Dashboard</span>
+        </div>
+      </div>
+      <div class="header-search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        Search...
+        <kbd>&#8984;K</kbd>
+      </div>
+      <div class="header-right">
+        <button class="header-icon-btn notif-dot">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/></svg>
+        </button>
+        <button class="header-icon-btn">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>
+        </button>
+        <div class="header-avatar"></div>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Dashboard</h1>
+          <p class="page-description">Overview of your platform metrics and market activity.</p>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-secondary">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z"/></svg>
+            Filter
+          </button>
+          <button class="btn btn-accent">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+            New Report
+          </button>
+        </div>
+      </div>
+
+      <!-- ─── Stat Cards ──── -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total AUM</div>
+          <div class="stat-value-row">
+            <span class="stat-prefix">$</span>
+            <span class="stat-value">12.4M</span>
+          </div>
+          <div class="stat-trend up">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
+            +14.2% vs last quarter
+          </div>
+          <div class="stat-sparkline">
+            <div class="spark-bar" style="height:40%;background:#003973;opacity:0.12"></div>
+            <div class="spark-bar" style="height:55%;background:#003973;opacity:0.17"></div>
+            <div class="spark-bar" style="height:45%;background:#003973;opacity:0.22"></div>
+            <div class="spark-bar" style="height:65%;background:#003973;opacity:0.28"></div>
+            <div class="spark-bar" style="height:55%;background:#003973;opacity:0.34"></div>
+            <div class="spark-bar" style="height:75%;background:#003973;opacity:0.42"></div>
+            <div class="spark-bar" style="height:60%;background:#003973;opacity:0.50"></div>
+            <div class="spark-bar" style="height:85%;background:#003973;opacity:0.60"></div>
+            <div class="spark-bar" style="height:72%;background:#003973;opacity:0.72"></div>
+            <div class="spark-bar" style="height:100%;background:#003973;opacity:0.85"></div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Active Accounts</div>
+          <div class="stat-value-row"><span class="stat-value">1,847</span></div>
+          <div class="stat-trend up">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
+            +6.8% from last month
+          </div>
+          <div class="stat-sparkline">
+            <div class="spark-bar" style="height:50%;background:#00BBDD;opacity:0.15"></div>
+            <div class="spark-bar" style="height:55%;background:#00BBDD;opacity:0.22"></div>
+            <div class="spark-bar" style="height:65%;background:#00BBDD;opacity:0.28"></div>
+            <div class="spark-bar" style="height:58%;background:#00BBDD;opacity:0.34"></div>
+            <div class="spark-bar" style="height:72%;background:#00BBDD;opacity:0.42"></div>
+            <div class="spark-bar" style="height:68%;background:#00BBDD;opacity:0.50"></div>
+            <div class="spark-bar" style="height:80%;background:#00BBDD;opacity:0.60"></div>
+            <div class="spark-bar" style="height:78%;background:#00BBDD;opacity:0.70"></div>
+            <div class="spark-bar" style="height:92%;background:#00BBDD;opacity:0.80"></div>
+            <div class="spark-bar" style="height:88%;background:#00BBDD;opacity:0.90"></div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Daily Volume</div>
+          <div class="stat-value-row">
+            <span class="stat-prefix">$</span>
+            <span class="stat-value">2.1M</span>
+          </div>
+          <div class="stat-trend up">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
+            +22.5% vs last week
+          </div>
+          <div class="stat-sparkline">
+            <div class="spark-bar" style="height:30%;background:#00B67A;opacity:0.15"></div>
+            <div class="spark-bar" style="height:60%;background:#00B67A;opacity:0.22"></div>
+            <div class="spark-bar" style="height:40%;background:#00B67A;opacity:0.28"></div>
+            <div class="spark-bar" style="height:80%;background:#00B67A;opacity:0.35"></div>
+            <div class="spark-bar" style="height:50%;background:#00B67A;opacity:0.42"></div>
+            <div class="spark-bar" style="height:70%;background:#00B67A;opacity:0.50"></div>
+            <div class="spark-bar" style="height:65%;background:#00B67A;opacity:0.60"></div>
+            <div class="spark-bar" style="height:95%;background:#00B67A;opacity:0.70"></div>
+            <div class="spark-bar" style="height:85%;background:#00B67A;opacity:0.80"></div>
+            <div class="spark-bar" style="height:100%;background:#00B67A;opacity:0.90"></div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Avg. Return</div>
+          <div class="stat-value-row">
+            <span class="stat-value">8.7</span>
+            <span class="stat-prefix">%</span>
+          </div>
+          <div class="stat-trend down">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 4.5l15 15m0 0V8.25m0 11.25H8.25"/></svg>
+            -1.3% from last quarter
+          </div>
+          <div class="stat-sparkline">
+            <div class="spark-bar" style="height:90%;background:#F5A623;opacity:0.5"></div>
+            <div class="spark-bar" style="height:85%;background:#F5A623;opacity:0.47"></div>
+            <div class="spark-bar" style="height:80%;background:#F5A623;opacity:0.42"></div>
+            <div class="spark-bar" style="height:78%;background:#F5A623;opacity:0.38"></div>
+            <div class="spark-bar" style="height:70%;background:#F5A623;opacity:0.34"></div>
+            <div class="spark-bar" style="height:72%;background:#F5A623;opacity:0.30"></div>
+            <div class="spark-bar" style="height:65%;background:#F5A623;opacity:0.26"></div>
+            <div class="spark-bar" style="height:60%;background:#F5A623;opacity:0.22"></div>
+            <div class="spark-bar" style="height:55%;background:#F5A623;opacity:0.18"></div>
+            <div class="spark-bar" style="height:50%;background:#F5A623;opacity:0.15"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── Bento: Table + Activity ──── -->
+      <div class="bento-grid">
+        <div class="card bento-wide">
+          <div class="card-header">
+            <div class="card-title">Recent Transactions</div>
+            <div class="btn-group">
+              <button class="btn btn-ghost btn-sm">Export</button>
+              <button class="btn btn-secondary btn-sm">View all</button>
+            </div>
+          </div>
+          <div class="card-body no-padding">
+            <table>
+              <thead>
+                <tr><th>Reference</th><th>Client</th><th>Type</th><th>Amount</th><th>Status</th><th>Date</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="table-cell-primary">#TXN-9401</td>
+                  <td>
+                    <div style="display:flex;align-items:center;gap:10px">
+                      <div class="avatar" style="background:linear-gradient(135deg,#003973,#0077FF)">MG</div>
+                      <div>
+                        <div class="table-cell-primary">Martin Garcia</div>
+                        <div style="font-size:12px;color:var(--text-muted)">Premium Account</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="tag tag-accent"><span class="tag-dot"></span>Buy</span></td>
+                  <td class="table-cell-mono">$45,200.00</td>
+                  <td><span class="tag tag-success"><span class="tag-dot"></span>Settled</span></td>
+                  <td>Mar 28, 2026</td>
+                </tr>
+                <tr>
+                  <td class="table-cell-primary">#TXN-9400</td>
+                  <td>
+                    <div style="display:flex;align-items:center;gap:10px">
+                      <div class="avatar" style="background:linear-gradient(135deg,#00BBDD,#00D4FA)">SF</div>
+                      <div>
+                        <div class="table-cell-primary">Sofia Fernandez</div>
+                        <div style="font-size:12px;color:var(--text-muted)">Institutional</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="tag tag-primary"><span class="tag-dot"></span>Sell</span></td>
+                  <td class="table-cell-mono">$128,500.00</td>
+                  <td><span class="tag tag-success"><span class="tag-dot"></span>Settled</span></td>
+                  <td>Mar 27, 2026</td>
+                </tr>
+                <tr>
+                  <td class="table-cell-primary">#TXN-9399</td>
+                  <td>
+                    <div style="display:flex;align-items:center;gap:10px">
+                      <div class="avatar" style="background:linear-gradient(135deg,#00B67A,#34D399)">RB</div>
+                      <div>
+                        <div class="table-cell-primary">Ricardo Becerra</div>
+                        <div style="font-size:12px;color:var(--text-muted)">Standard</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="tag tag-accent"><span class="tag-dot"></span>Buy</span></td>
+                  <td class="table-cell-mono">$12,800.00</td>
+                  <td><span class="tag tag-warning"><span class="tag-dot"></span>Pending</span></td>
+                  <td>Mar 27, 2026</td>
+                </tr>
+                <tr>
+                  <td class="table-cell-primary">#TXN-9398</td>
+                  <td>
+                    <div style="display:flex;align-items:center;gap:10px">
+                      <div class="avatar" style="background:linear-gradient(135deg,#F5A623,#FBBF24)">CL</div>
+                      <div>
+                        <div class="table-cell-primary">Camila Lopez</div>
+                        <div style="font-size:12px;color:var(--text-muted)">Premium Account</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="tag tag-default"><span class="tag-dot"></span>Transfer</span></td>
+                  <td class="table-cell-mono">$8,340.00</td>
+                  <td><span class="tag tag-error"><span class="tag-dot"></span>Failed</span></td>
+                  <td>Mar 26, 2026</td>
+                </tr>
+                <tr>
+                  <td class="table-cell-primary">#TXN-9397</td>
+                  <td>
+                    <div style="display:flex;align-items:center;gap:10px">
+                      <div class="avatar" style="background:linear-gradient(135deg,#E62626,#F87171)">JM</div>
+                      <div>
+                        <div class="table-cell-primary">Juan Martinez</div>
+                        <div style="font-size:12px;color:var(--text-muted)">Institutional</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="tag tag-primary"><span class="tag-dot"></span>Sell</span></td>
+                  <td class="table-cell-mono">$256,000.00</td>
+                  <td><span class="tag tag-info"><span class="tag-dot"></span>Processing</span></td>
+                  <td>Mar 25, 2026</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Activity</div>
+            <button class="btn btn-ghost btn-sm">View all</button>
+          </div>
+          <div class="card-body" style="padding-top:8px;padding-bottom:8px">
+            <div class="activity-item">
+              <div class="activity-icon" style="background:var(--accent-light);color:var(--accent-dark)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+              </div>
+              <div class="activity-content">
+                <div class="activity-text"><strong>New account</strong> opened by Martin Garcia</div>
+                <div class="activity-time">5 min ago</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon" style="background:var(--success-light);color:var(--success)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              </div>
+              <div class="activity-content">
+                <div class="activity-text"><strong>Settlement complete</strong> for #TXN-9401</div>
+                <div class="activity-time">12 min ago</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon" style="background:var(--primary-light);color:var(--primary)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+              </div>
+              <div class="activity-content">
+                <div class="activity-text"><strong>Report generated</strong> Q1 2026 Portfolio</div>
+                <div class="activity-time">1 hour ago</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon" style="background:var(--warning-light);color:var(--warning)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>
+              </div>
+              <div class="activity-content">
+                <div class="activity-text"><strong>Compliance alert</strong> on transfer #TXN-9398</div>
+                <div class="activity-time">3 hours ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ Component Showcase ═════════════ -->
+      <div class="section-divider">
+        <div class="section-divider-line"></div>
+        <div class="section-divider-label">Component Library Preview</div>
+        <div class="section-divider-line"></div>
+      </div>
+
+      <!-- Color Palette -->
+      <div class="card" style="margin-bottom:24px">
+        <div class="card-header"><div class="card-title">Color Palette — BBSA Inspired</div></div>
+        <div class="card-body">
+          <div style="margin-bottom:20px">
+            <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:12px">Brand</div>
+            <div class="palette-row">
+              <div class="palette-swatch"><div class="palette-color" style="background:#F2F7FC"></div><div class="palette-hex">#F2F7FC</div></div>
+              <div class="palette-swatch"><div class="palette-color" style="background:#E8F0FA"></div><div class="palette-hex">#E8F0FA</div></div>
+              <div class="palette-swatch"><div class="palette-color" style="background:#B3D1F0"></div><div class="palette-hex">#B3D1F0</div></div>
+              <div class="palette-swatch"><div class="palette-color" style="background:#0077FF"></div><div class="palette-hex">#0077FF</div></div>
+              <div class="palette-swatch"><div class="palette-color" style="background:#004A94"></div><div class="palette-hex">#004A94</div></div>
+              <div class="palette-swatch"><div class="palette-color" style="background:#003973"></div><div class="palette-hex">#003973</div></div>
+              <div class="palette-swatch"><div class="palette-color" style="background:#002B57"></div><div class="palette-hex">#002B57</div></div>
+              <div class="palette-swatch"><div class="palette-color" style="background:#001224"></div><div class="palette-hex">#001224</div></div>
+            </div>
+          </div>
+          <div style="margin-bottom:20px">
+            <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:12px">Accent</div>
+            <div class="palette-row">
+              <div class="palette-swatch"><div class="palette-color" style="background:#E5F9FD"></div><div class="palette-hex">#E5F9FD</div></div>
+              <div class="palette-swatch"><div class="palette-color" style="background:#80E0F0"></div><div class="palette-hex">#80E0F0</div></div>
+              <div class="palette-swatch"><div class="palette-color" style="background:#00BBDD"></div><div class="palette-hex">#00BBDD</div></div>
+              <div class="palette-swatch"><div class="palette-color" style="background:#009BB8"></div><div class="palette-hex">#009BB8</div></div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:12px">Semantic</div>
+            <div class="palette-row">
+              <div class="palette-swatch"><div class="palette-color" style="background:#00B67A"></div><div class="palette-name">Success</div></div>
+              <div class="palette-swatch"><div class="palette-color" style="background:#F5A623"></div><div class="palette-name">Warning</div></div>
+              <div class="palette-swatch"><div class="palette-color" style="background:#E62626"></div><div class="palette-name">Error</div></div>
+              <div class="palette-swatch"><div class="palette-color" style="background:#0077FF"></div><div class="palette-name">Info</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buttons + Tags -->
+      <div class="grid-2" style="margin-bottom:24px">
+        <div class="card">
+          <div class="card-header"><div class="card-title">Buttons</div></div>
+          <div class="card-body">
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+                <button class="btn btn-primary btn-lg">Large Primary</button>
+                <button class="btn btn-accent">Accent / CTA</button>
+                <button class="btn btn-primary btn-sm">Small</button>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+                <button class="btn btn-secondary">Secondary</button>
+                <button class="btn btn-ghost">Ghost</button>
+                <button class="btn btn-danger">Danger</button>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+                <button class="btn btn-primary" style="opacity:0.5;cursor:not-allowed">Disabled</button>
+                <button class="btn btn-accent">
+                  <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+                  With Icon
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Tags &amp; Progress</div></div>
+          <div class="card-body">
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <span class="tag tag-primary"><span class="tag-dot"></span>Navy</span>
+                <span class="tag tag-accent"><span class="tag-dot"></span>Cyan</span>
+                <span class="tag tag-success"><span class="tag-dot"></span>Settled</span>
+                <span class="tag tag-warning"><span class="tag-dot"></span>Pending</span>
+                <span class="tag tag-error"><span class="tag-dot"></span>Failed</span>
+                <span class="tag tag-info"><span class="tag-dot"></span>Processing</span>
+                <span class="tag tag-default"><span class="tag-dot"></span>Draft</span>
+              </div>
+              <div>
+                <div style="font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:10px">Progress Bars</div>
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <div>
+                    <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px">
+                      <span style="color:var(--text-secondary)">Portfolio allocation</span>
+                      <span style="font-weight:600;color:var(--text-primary)">78%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width:78%;background:linear-gradient(90deg,#003973,#0077FF)"></div></div>
+                  </div>
+                  <div>
+                    <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px">
+                      <span style="color:var(--text-secondary)">Compliance check</span>
+                      <span style="font-weight:600;color:var(--text-primary)">100%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width:100%;background:linear-gradient(90deg,#00B67A,#34D399)"></div></div>
+                  </div>
+                  <div>
+                    <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px">
+                      <span style="color:var(--text-secondary)">Settlement queue</span>
+                      <span style="font-weight:600;color:var(--text-primary)">62%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width:62%;background:linear-gradient(90deg,#00BBDD,#00D4FA)"></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Forms + Alerts/Modal -->
+      <div class="grid-2" style="margin-bottom:24px">
+        <div class="card">
+          <div class="card-header"><div class="card-title">Form Elements</div></div>
+          <div class="card-body">
+            <div style="display:flex;flex-direction:column;gap:18px">
+              <div class="form-group">
+                <label class="form-label">Account Holder</label>
+                <input type="text" class="input" placeholder="Enter full name" value="Lucas Borella">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" class="input" placeholder="you@company.com">
+                <span class="form-hint">Used for account notifications.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Account Type</label>
+                <select class="select">
+                  <option>Premium Account</option>
+                  <option>Standard</option>
+                  <option>Institutional</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Notes</label>
+                <textarea class="textarea" placeholder="Additional notes..."></textarea>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <div class="switch-wrapper">
+                  <label class="switch"><input type="checkbox" checked><div class="switch-track"></div><div class="switch-thumb"></div></label>
+                  <span style="font-size:14px;color:var(--text-secondary)">Email alerts</span>
+                </div>
+                <div class="switch-wrapper">
+                  <label class="switch"><input type="checkbox"><div class="switch-track"></div><div class="switch-thumb"></div></label>
+                  <span style="font-size:14px;color:var(--text-secondary)">Two-factor authentication</span>
+                </div>
+                <label class="checkbox-wrapper"><input type="checkbox" checked> I accept the terms and conditions</label>
+              </div>
+              <div style="display:flex;gap:8px">
+                <button class="btn btn-primary">Save Changes</button>
+                <button class="btn btn-secondary">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:24px">
+          <div class="card">
+            <div class="card-header"><div class="card-title">Alerts</div></div>
+            <div class="card-body">
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <div class="alert alert-success">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  <div>Transaction settled successfully.</div>
+                </div>
+                <div class="alert alert-warning">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>
+                  <div>KYC documentation expires in 7 days. Renew now.</div>
+                </div>
+                <div class="alert alert-error">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>
+                  <div>Transfer failed. Insufficient funds in source account.</div>
+                </div>
+                <div class="alert alert-info">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"/></svg>
+                  <div>Market closes at 17:00 ART. 2 hours remaining.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><div class="card-title">Modal Preview</div></div>
+            <div class="card-body no-padding">
+              <div class="modal-preview-container">
+                <div class="modal-preview">
+                  <div class="modal-preview-header">
+                    <div class="modal-preview-title">Confirm Trade</div>
+                    <button class="modal-close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+                  </div>
+                  <div class="modal-preview-body">
+                    <p>You are about to execute a buy order for <strong style="color:var(--text-primary)">500 units of GGAL</strong> at <strong style="color:var(--text-primary)">$2,450.00 ARS</strong>. This action cannot be undone once the order is placed.</p>
+                  </div>
+                  <div class="modal-preview-footer">
+                    <button class="btn btn-secondary btn-sm">Cancel</button>
+                    <button class="btn btn-accent btn-sm">Confirm Trade</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Typography + Shadows -->
+      <div class="grid-2" style="margin-bottom:24px">
+        <div class="card">
+          <div class="card-header"><div class="card-title">Typography Scale</div></div>
+          <div class="card-body">
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div style="display:flex;align-items:baseline;gap:20px">
+                <span style="font-size:11px;font-weight:600;color:var(--text-muted);width:55px;flex-shrink:0">28/800</span>
+                <span style="font-size:28px;font-weight:800;letter-spacing:-0.03em;color:var(--text-primary)">Display Heading</span>
+              </div>
+              <div style="display:flex;align-items:baseline;gap:20px">
+                <span style="font-size:11px;font-weight:600;color:var(--text-muted);width:55px;flex-shrink:0">22/700</span>
+                <span style="font-size:22px;font-weight:700;letter-spacing:-0.02em;color:var(--text-primary)">Section Heading</span>
+              </div>
+              <div style="display:flex;align-items:baseline;gap:20px">
+                <span style="font-size:11px;font-weight:600;color:var(--text-muted);width:55px;flex-shrink:0">18/600</span>
+                <span style="font-size:18px;font-weight:600;letter-spacing:-0.01em;color:var(--text-primary)">Card Title</span>
+              </div>
+              <div style="display:flex;align-items:baseline;gap:20px">
+                <span style="font-size:11px;font-weight:600;color:var(--text-muted);width:55px;flex-shrink:0">15/600</span>
+                <span style="font-size:15px;font-weight:600;color:var(--text-primary)">Subtitle</span>
+              </div>
+              <div style="border-top:1px solid var(--border-light);padding-top:14px;display:flex;align-items:baseline;gap:20px">
+                <span style="font-size:11px;font-weight:600;color:var(--text-muted);width:55px;flex-shrink:0">14/400</span>
+                <span style="font-size:14px;color:var(--text-secondary);line-height:1.6">Body text. Designed for long-form reading in dashboards and admin panels.</span>
+              </div>
+              <div style="display:flex;align-items:baseline;gap:20px">
+                <span style="font-size:11px;font-weight:600;color:var(--text-muted);width:55px;flex-shrink:0">11/600</span>
+                <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted)">Overline — Table Headers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><div class="card-title">Shadows &amp; Elevation</div></div>
+          <div class="card-body">
+            <div style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:20px">
+              <div style="text-align:center">
+                <div style="width:80px;height:60px;background:var(--card-bg);border-radius:var(--radius-md);box-shadow:var(--shadow-xs);margin-bottom:8px"></div>
+                <div style="font-size:11px;color:var(--text-muted)">XS</div>
+              </div>
+              <div style="text-align:center">
+                <div style="width:80px;height:60px;background:var(--card-bg);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);margin-bottom:8px"></div>
+                <div style="font-size:11px;color:var(--text-muted)">SM</div>
+              </div>
+              <div style="text-align:center">
+                <div style="width:80px;height:60px;background:var(--card-bg);border-radius:var(--radius-md);box-shadow:var(--shadow-md);margin-bottom:8px"></div>
+                <div style="font-size:11px;color:var(--text-muted)">MD</div>
+              </div>
+              <div style="text-align:center">
+                <div style="width:80px;height:60px;background:var(--card-bg);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);margin-bottom:8px"></div>
+                <div style="font-size:11px;color:var(--text-muted)">LG</div>
+              </div>
+              <div style="text-align:center">
+                <div style="width:80px;height:60px;background:var(--card-bg);border-radius:var(--radius-md);box-shadow:var(--shadow-xl);margin-bottom:8px"></div>
+                <div style="font-size:11px;color:var(--text-muted)">XL</div>
+              </div>
+            </div>
+            <div>
+              <div class="tooltip-demo" style="margin-bottom:8px">
+                <div class="tooltip-bubble">Tooltip on dark navy</div>
+                <button class="btn btn-secondary btn-sm">Hover me</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;padding:24px 0 8px;font-size:12px;color:var(--text-muted)">
+        Gravity Admin Theme &mdash; Inspired by <a href="https://bbsa.com.ar" style="color:var(--accent);text-decoration:none">bbsa.com.ar</a> &mdash; Deep Navy + Cyan Accent
+      </div>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>
