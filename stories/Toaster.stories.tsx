@@ -11,7 +11,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'Stack toasts powered by [Sonner](https://sonner.emilkowal.ski/), themed with Ant Design tokens via `GravityToaster`. A default instance is mounted by `GravityProvider` (`toaster` prop). Import `toast` from `gravity-components` to trigger notifications.',
+          'Stack toasts powered by [Sonner](https://sonner.emilkowal.ski/), themed with Ant Design tokens via `GravityToaster`. A default instance is mounted by `GravityProvider` (`toaster` prop). Import `toast` from `@crosscode/gravity-components` to trigger notifications.',
       },
     },
   },

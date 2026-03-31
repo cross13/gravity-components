@@ -9,7 +9,7 @@ Internal layout and chrome for several components use [styled-components](https:
 Peer dependencies (install these in your app; versions should satisfy the ranges below):
 
 ```bash
-npm install gravity-components antd dayjs react react-dom sonner styled-components
+npm install @crosscode/gravity-components antd dayjs react react-dom sonner styled-components
 ```
 
 Typical ranges (see `package.json` `peerDependencies` for the source of truth):
@@ -26,13 +26,13 @@ If you use Ant Design icons in props (for example `icon` on `Button`), also inst
 
 ## Package exports
 
-- **`gravity-components`** — components, hooks, and theme helpers (`GravityProvider`, `adminTheme`, `mergeTheme`, tokens, etc.).
-- **`gravity-components/theme`** — the same theme surface only, for apps that want a lighter import path without pulling the full component bundle.
+- **`@crosscode/gravity-components`** — components, hooks, and theme helpers (`GravityProvider`, `adminTheme`, `mergeTheme`, tokens, etc.).
+- **`@crosscode/gravity-components/theme`** — the same theme surface only, for apps that want a lighter import path without pulling the full component bundle.
 
 ## Quick start
 
 ```tsx
-import { GravityProvider, Button, Table } from 'gravity-components'
+import { GravityProvider, Button, Table } from '@crosscode/gravity-components'
 
 function App() {
   return (
@@ -50,7 +50,7 @@ function App() {
 Override tokens while keeping the admin preset:
 
 ```tsx
-import { GravityProvider } from 'gravity-components'
+import { GravityProvider } from '@crosscode/gravity-components'
 
 <GravityProvider tokens={{ colorPrimary: '#7C3AED', borderRadius: 8 }}>
   <App />
@@ -60,7 +60,7 @@ import { GravityProvider } from 'gravity-components'
 Or merge a full custom `ThemeConfig`:
 
 ```tsx
-import { GravityProvider, adminTheme, mergeTheme } from 'gravity-components'
+import { GravityProvider, adminTheme, mergeTheme } from '@crosscode/gravity-components'
 
 const myTheme = mergeTheme(adminTheme, {
   token: { colorPrimary: '#059669' },
@@ -72,7 +72,7 @@ const myTheme = mergeTheme(adminTheme, {
 </GravityProvider>
 ```
 
-Token types and defaults are exported as `GravityTokens` and `defaultTokens` from the main entry (and from `gravity-components/theme`).
+Token types and defaults are exported as `GravityTokens` and `defaultTokens` from the main entry (and from `@crosscode/gravity-components/theme`).
 
 ## Components and APIs
 

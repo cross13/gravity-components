@@ -1,6 +1,9 @@
 {
-  "name": "gravity-components",
-  "version": "0.2.0",
+  "name": "@crosscode/gravity-components",
+  "version": "0.3.1",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "A drop-in, fully themed admin UI kit built on Ant Design v6",
   "type": "module",
   "main": "./dist/index.cjs",
