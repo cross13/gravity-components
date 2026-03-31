@@ -1,5 +1,28 @@
 # Gravity Components
 
+<p align="center">
+  <a href="https://www.npmjs.com/package/@crosscode/gravity-components" title="Latest @crosscode/gravity-components on the npm registry">
+    <img src="https://img.shields.io/npm/v/%40crosscode%2Fgravity-components?style=flat-square&logo=npm&logoColor=white&label=registry&color=cb3837" alt="npm package version" height="28" />
+  </a>
+  &nbsp;
+  <a href="https://github.com/cross13/gravity-components/actions/workflows/ci.yml?query=branch%3Amain" title="CI on main: install, lint, test, library build (green = passing)">
+    <img src="https://img.shields.io/github/actions/workflow/status/cross13/gravity-components/ci.yml?branch=main&style=flat-square&logo=githubactions&logoColor=white&label=ci" alt="CI workflow status on main" height="28" />
+  </a>
+  &nbsp;
+  <a href="https://github.com/cross13/gravity-components/actions/workflows/release.yml?query=branch%3Amain" title="Release on main: Changesets version PR or npm publish (green = passing)">
+    <img src="https://img.shields.io/github/actions/workflow/status/cross13/gravity-components/release.yml?branch=main&style=flat-square&logo=githubactions&logoColor=white&label=release" alt="Release workflow status on main" height="28" />
+  </a>
+</p>
+
+<p align="center">
+  <sub>
+    <strong>Registry</strong> — live npm version ·
+    <strong>CI</strong> — quality + build ·
+    <strong>Release</strong> — ship to npm
+    · <a href="docs/publishing.md">Publishing guide</a>
+  </sub>
+</p>
+
 A drop-in, fully themed admin UI kit built on [Ant Design v6](https://ant.design/). Install from npm, wrap your app with `GravityProvider`, and use Storybook-documented components with Gravity’s admin preset and token model.
 
 Internal layout and chrome for several components use [styled-components](https://styled-components.com/) (a **peer dependency**). Toasts use [Sonner](https://sonner.emilkowal.ski/) via `GravityToaster`, mounted by default inside `GravityProvider`.
