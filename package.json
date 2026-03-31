@@ -32,6 +32,9 @@
     "dist"
   ],
   "sideEffects": false,
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
@@ -43,6 +46,9 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepublishOnly": "npm run build",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "changeset publish",
     "size": "size-limit",
     "check-size": "size-limit --why"
   },
@@ -80,7 +86,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gravity-components/gravity-components.git"
+    "url": "git+https://github.com/cross13/gravity-components.git"
   },
   "devDependencies": {
     "@ant-design/icons": "^6.1.1",

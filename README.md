@@ -128,6 +128,8 @@ npm run lint           # ESLint (`src/`)
 npm run build-storybook # Static Storybook into `storybook-static/`
 ```
 
+Releases to npm are automated with Changesets and GitHub Actions; see [docs/publishing.md](docs/publishing.md) for the `NPM_TOKEN` secret and the version / publish flow.
+
 ## Requirements
 
 - **React** 18 or newer (the repo is tested with React 19 in development).
