@@ -158,59 +158,80 @@ function AdvisorDashboardPanel() {
   return (
     <S.PageRoot>
       <S.Content>
-        <S.TopAccent aria-hidden />
-        <S.Header>
-          <S.HeaderLead>
-            <S.PageTitle>Panel del asesor</S.PageTitle>
-            <S.PageSubtitle>
-              Vista consolidada de evolución de patrimonio, distribución por cartera y principales
-              clientes. Los datos reflejan únicamente tu cartera asignada.
-            </S.PageSubtitle>
-          </S.HeaderLead>
-          <S.HeaderRight>
-            <S.DatePill>31 mar 2026 · Mercados abiertos</S.DatePill>
-            <S.CurrencySegmented
-              value={currency}
-              onChange={(v) => setCurrency(v as DashboardCurrency)}
-              options={[
-                { label: 'Pesos (ARS)', value: 'ARS' },
-                { label: 'Dólares (USD)', value: 'USD' },
-              ]}
-            />
-          </S.HeaderRight>
-        </S.Header>
+        <S.DashboardShell>
+          <S.TopAccent aria-hidden />
+          <S.ShellBody>
+            <S.Header>
+              <S.HeaderLead>
+                <S.TitleRow>
+                  <S.PageTitle>Panel del asesor</S.PageTitle>
+                  <S.AdvisorBadge>Asesor · {ADVISOR_NAME}</S.AdvisorBadge>
+                </S.TitleRow>
+                <S.PageSubtitle>
+                  Evolución de patrimonio, distribución por cartera y ranking de clientes. Solo tu
+                  cartera asignada.
+                </S.PageSubtitle>
+              </S.HeaderLead>
+              <S.HeaderRight>
+                <S.DatePill>31 mar 2026 · Mercados abiertos</S.DatePill>
+                <S.CurrencyBlock>
+                  <S.CurrencyLabel>Moneda de visualización</S.CurrencyLabel>
+                  <S.CurrencySegmented
+                    value={currency}
+                    onChange={(v) => setCurrency(v as DashboardCurrency)}
+                    options={[
+                      { label: 'Pesos (ARS)', value: 'ARS' },
+                      { label: 'Dólares (USD)', value: 'USD' },
+                    ]}
+                  />
+                </S.CurrencyBlock>
+              </S.HeaderRight>
+            </S.Header>
 
-        <S.TimelineSection>
-          <S.SectionHint>Evolución</S.SectionHint>
-          <AdvisorTotalTimelineWidget
-            data={timelineData}
-            currency={currency}
-            viewerRole="advisor"
-            advisorName={ADVISOR_NAME}
-            height={340}
-          />
-        </S.TimelineSection>
+            <S.BodyStack>
+              <S.TimelineSection>
+                <S.SectionHeader>
+                  <S.SectionHint>Evolución del patrimonio</S.SectionHint>
+                  <S.SectionRule aria-hidden />
+                </S.SectionHeader>
+                <AdvisorTotalTimelineWidget
+                  data={timelineData}
+                  currency={currency}
+                  viewerRole="advisor"
+                  advisorName={ADVISOR_NAME}
+                  height={340}
+                />
+              </S.TimelineSection>
 
-        <S.LowerGrid>
-          <S.WalletColumn>
-            <S.SectionHint>Distribución</S.SectionHint>
-            <WalletStatisticsWidget
-              rows={walletRows}
-              currency={currency}
-              viewerRole="advisor"
-              advisorName={ADVISOR_NAME}
-            />
-          </S.WalletColumn>
-          <S.ClientsColumn>
-            <S.SectionHint>Ranking</S.SectionHint>
-            <TopClientsWidget
-              clients={advisorTopClients}
-              viewerRole="advisor"
-              advisorName={ADVISOR_NAME}
-              maxItems={10}
-            />
-          </S.ClientsColumn>
-        </S.LowerGrid>
+              <S.LowerGrid>
+                <S.WalletColumn>
+                  <S.SectionHeader>
+                    <S.SectionHint>Distribución por cartera</S.SectionHint>
+                    <S.SectionRule aria-hidden />
+                  </S.SectionHeader>
+                  <WalletStatisticsWidget
+                    rows={walletRows}
+                    currency={currency}
+                    viewerRole="advisor"
+                    advisorName={ADVISOR_NAME}
+                  />
+                </S.WalletColumn>
+                <S.ClientsColumn>
+                  <S.SectionHeader>
+                    <S.SectionHint>Principales clientes</S.SectionHint>
+                    <S.SectionRule aria-hidden />
+                  </S.SectionHeader>
+                  <TopClientsWidget
+                    clients={advisorTopClients}
+                    viewerRole="advisor"
+                    advisorName={ADVISOR_NAME}
+                    maxItems={10}
+                  />
+                </S.ClientsColumn>
+              </S.LowerGrid>
+            </S.BodyStack>
+          </S.ShellBody>
+        </S.DashboardShell>
       </S.Content>
     </S.PageRoot>
   )
