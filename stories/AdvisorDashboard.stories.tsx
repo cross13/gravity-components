@@ -8,23 +8,9 @@ import type { WalletStatisticRow } from '../src/components/widgets/WalletStatist
 import { TopClientsWidget } from '../src/components/widgets/TopClientsWidget'
 import type { TopClientRow } from '../src/components/widgets/TopClientsWidget'
 import * as S from './AdvisorDashboard.stories.styles'
+import { advisorTimelineArs } from './mocks/timelineStoryData'
 
 const ADVISOR_NAME = 'María López'
-
-const advisorTimelineArs: AdvisorTotalTimelinePoint[] = [
-  { period: 'Ene', total: 8_200_000 },
-  { period: 'Feb', total: 8_450_000 },
-  { period: 'Mar', total: 8_100_000 },
-  { period: 'Abr', total: 8_900_000 },
-  { period: 'May', total: 9_200_000 },
-  { period: 'Jun', total: 8_950_000 },
-  { period: 'Jul', total: 9_600_000 },
-  { period: 'Ago', total: 9_850_000 },
-  { period: 'Sep', total: 9_400_000 },
-  { period: 'Oct', total: 10_100_000 },
-  { period: 'Nov', total: 10_350_000 },
-  { period: 'Dic', total: 10_500_000 },
-]
 
 const walletsAdvisorArs: WalletStatisticRow[] = [
   {
@@ -201,7 +187,7 @@ function AdvisorDashboardPanel() {
             currency={currency}
             viewerRole="advisor"
             advisorName={ADVISOR_NAME}
-            height={292}
+            height={340}
           />
         </S.TimelineSection>
 

@@ -8,8 +8,10 @@ import type {
 } from './AdvisorTotalTimelineWidget.types'
 import * as S from './AdvisorTotalTimelineWidget.styles'
 
+/** Greens for positive / above-zero territory (aligned with theme success tones). */
 const CHART_COLORS = {
-  stroke: '#003973',
+  stroke: '#0A6B47',
+  fillStrong: '#00B67A',
   grid: '#E8EDF2',
   muted: '#8494A7',
   label: '#0D1B2A',
@@ -91,8 +93,9 @@ export function AdvisorTotalTimelineWidget({
           <AreaChart data={data} margin={{ top: 12, right: 8, left: 0, bottom: 0 }}>
             <defs>
               <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor={CHART_COLORS.stroke} stopOpacity={0.22} />
-                <stop offset="100%" stopColor={CHART_COLORS.stroke} stopOpacity={0.02} />
+                <stop offset="0%" stopColor={CHART_COLORS.fillStrong} stopOpacity={0.28} />
+                <stop offset="55%" stopColor={CHART_COLORS.fillStrong} stopOpacity={0.1} />
+                <stop offset="100%" stopColor={CHART_COLORS.fillStrong} stopOpacity={0.02} />
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke={CHART_COLORS.grid} vertical={false} />
@@ -103,6 +106,7 @@ export function AdvisorTotalTimelineWidget({
               tickLine={false}
             />
             <YAxis
+              domain={[0, 'auto']}
               tick={{ fontSize: 11, fontWeight: 500, fill: CHART_COLORS.muted }}
               axisLine={false}
               tickLine={false}
@@ -126,13 +130,15 @@ export function AdvisorTotalTimelineWidget({
               }}
             />
             <Area
-              type="monotone"
+              type="linear"
               dataKey="total"
               stroke={CHART_COLORS.stroke}
-              strokeWidth={2.5}
+              strokeWidth={2}
+              strokeLinejoin="miter"
+              strokeLinecap="butt"
               fill={`url(#${gradientId})`}
-              dot={{ r: 3, fill: CHART_COLORS.stroke }}
-              activeDot={{ r: 5, stroke: '#fff', strokeWidth: 2 }}
+              dot={false}
+              activeDot={false}
               isAnimationActive={false}
             />
           </AreaChart>
