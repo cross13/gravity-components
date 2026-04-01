@@ -159,18 +159,28 @@ export const DenominationTag = styled.span`
   border: 1px solid #e2e8f0;
 `
 
-export const AmountStack = styled.div`
+export const PercentColumn = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 6px;
-  min-width: 120px;
+  gap: 8px;
+  min-width: 108px;
+  max-width: 200px;
+  margin-left: auto;
+`
+
+export const PercentFigure = styled.span`
+  ${mono}
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.03em;
+  line-height: 1;
 `
 
 export const AllocationTrack = styled.div`
   width: 100%;
-  max-width: 160px;
-  height: 4px;
+  height: 5px;
   border-radius: 999px;
   background: #e2e8f0;
   overflow: hidden;
@@ -181,20 +191,43 @@ export const AllocationFill = styled.div<{ $tone: string }>`
   border-radius: 999px;
   min-width: 0;
   background: ${(p) => toneColors[p.$tone] ?? toneColors.neutral};
-  opacity: 0.88;
+  opacity: 0.92;
   transition: width 0.25s ease;
 `
 
-export const WeightCell = styled.div`
-  min-width: 56px;
+export const FooterPercentBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  min-width: 108px;
+  max-width: 200px;
+  margin-left: auto;
 `
 
-export const WeightFigure = styled.span`
+export const FooterPercentFigure = styled.span`
   ${mono}
-  font-size: 12px;
-  font-weight: 600;
-  color: #475569;
-  letter-spacing: -0.02em;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.03em;
+  line-height: 1;
+`
+
+export const FooterAllocationTrack = styled.div`
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  overflow: hidden;
+`
+
+export const FooterAllocationFill = styled.div`
+  height: 100%;
+  width: 100%;
+  border-radius: 999px;
+  background: #64748b;
+  opacity: 0.85;
 `
 
 export const NumericCell = styled.span`

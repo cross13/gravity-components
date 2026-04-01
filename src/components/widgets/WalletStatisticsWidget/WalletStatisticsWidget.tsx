@@ -133,7 +133,7 @@ export function WalletStatisticsWidget({
                   <S.Th $align="left">Cartera</S.Th>
                   <S.Th $align="right">Cuentas</S.Th>
                   <S.Th $align="right">Monto</S.Th>
-                  <S.Th $align="left">Peso</S.Th>
+                  <S.Th $align="right">% del total</S.Th>
                 </S.TheadRow>
               </thead>
               <tbody>
@@ -141,6 +141,7 @@ export function WalletStatisticsWidget({
                   const tone = row.tone ?? DEFAULT_TONES[index % DEFAULT_TONES.length]
                   const weightPct =
                     totals.amount > 0 ? Math.min(100, (row.totalAmount / totals.amount) * 100) : 0
+                  const fraction = totals.amount > 0 ? row.totalAmount / totals.amount : 0
                   return (
                     <S.TbodyRow key={row.id} $hover>
                       <S.Td $align="left">
@@ -156,25 +157,20 @@ export function WalletStatisticsWidget({
                         <S.NumericCell>{formatCount(row.accountCount)}</S.NumericCell>
                       </S.Td>
                       <S.Td $align="right">
-                        <S.AmountStack>
-                          <S.CurrencyCell>{formatCurrency(row.totalAmount, currency)}</S.CurrencyCell>
+                        <S.CurrencyCell>{formatCurrency(row.totalAmount, currency)}</S.CurrencyCell>
+                      </S.Td>
+                      <S.Td $align="right">
+                        <S.PercentColumn>
+                          <S.PercentFigure>
+                            {formatWeightFraction(fraction, totals.amount)}
+                          </S.PercentFigure>
                           <S.AllocationTrack aria-hidden>
                             <S.AllocationFill
                               $tone={tone ?? 'neutral'}
                               style={{ width: `${weightPct}%` }}
                             />
                           </S.AllocationTrack>
-                        </S.AmountStack>
-                      </S.Td>
-                      <S.Td $align="left">
-                        <S.WeightCell>
-                          <S.WeightFigure>
-                            {formatWeightFraction(
-                              totals.amount > 0 ? row.totalAmount / totals.amount : 0,
-                              totals.amount,
-                            )}
-                          </S.WeightFigure>
-                        </S.WeightCell>
+                        </S.PercentColumn>
                       </S.Td>
                     </S.TbodyRow>
                   )
@@ -191,8 +187,13 @@ export function WalletStatisticsWidget({
                   <S.TfootTd $align="right">
                     <S.FooterAmount>{formatCurrency(totals.amount, currency)}</S.FooterAmount>
                   </S.TfootTd>
-                  <S.TfootTd $align="left">
-                    <S.WeightFigure>100%</S.WeightFigure>
+                  <S.TfootTd $align="right">
+                    <S.FooterPercentBlock>
+                      <S.FooterPercentFigure>100%</S.FooterPercentFigure>
+                      <S.FooterAllocationTrack aria-hidden>
+                        <S.FooterAllocationFill />
+                      </S.FooterAllocationTrack>
+                    </S.FooterPercentBlock>
                   </S.TfootTd>
                 </S.TfootRow>
               </tfoot>
