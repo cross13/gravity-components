@@ -19,6 +19,7 @@ export default defineConfig({
     'dayjs',
     'sonner',
     'styled-components',
+    'recharts',
   ],
   splitting: false,
 })

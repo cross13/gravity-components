@@ -90,3 +90,19 @@ export type { DataGridProps, DataGridFetchParams, DataGridFetchResult } from './
 
 export { Upload, Dragger } from './components/Upload'
 export type { UploadProps, DraggerProps } from './components/Upload'
+
+// Dashboard widgets
+export type { DashboardCurrency, DashboardViewerRole } from './components/widgets/dashboardTypes'
+export { AdvisorTotalTimelineWidget } from './components/widgets/AdvisorTotalTimelineWidget'
+export type {
+  AdvisorTotalTimelinePoint,
+  AdvisorTotalTimelineWidgetProps,
+} from './components/widgets/AdvisorTotalTimelineWidget'
+export { WalletStatisticsWidget } from './components/widgets/WalletStatisticsWidget'
+export type {
+  WalletStatisticRow,
+  WalletStatisticsWidgetProps,
+  WalletStatisticTone,
+} from './components/widgets/WalletStatisticsWidget'
+export { TopClientsWidget } from './components/widgets/TopClientsWidget'
+export type { TopClientRow, TopClientsWidgetProps } from './components/widgets/TopClientsWidget'
