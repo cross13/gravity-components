@@ -1,5 +1,11 @@
 # @crosscode/gravity-components
 
+## 0.4.0
+
+### Minor Changes
+
+- Better PageHeader
+
 ## 0.3.2
 
 ### Patch Changes
