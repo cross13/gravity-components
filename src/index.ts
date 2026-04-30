@@ -88,6 +88,16 @@ export type { StatCardProps } from './components/StatCard'
 export { DataGrid } from './components/DataGrid'
 export type { DataGridProps, DataGridFetchParams, DataGridFetchResult } from './components/DataGrid'
 
+export { Filters } from './components/Filters'
+export type {
+  FilterField,
+  FilterFieldOption,
+  FilterValue,
+  FilterValues,
+  FiltersLabels,
+  FiltersProps,
+} from './components/Filters'
+
 export { Upload, Dragger } from './components/Upload'
 export type { UploadProps, DraggerProps } from './components/Upload'
 
