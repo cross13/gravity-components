@@ -126,6 +126,8 @@ export const componentTokens = {
   },
   Pagination: {
     itemActiveBg: '#003973',
+    itemActiveColor: '#FFFFFF',
+    itemActiveColorHover: '#FFFFFF',
     itemBg: '#FFFFFF',
     borderRadius: 8,
     controlHeight: 36,
