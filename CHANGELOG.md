@@ -1,5 +1,11 @@
 # @crosscode/gravity-components
 
+## 0.5.1
+
+### Patch Changes
+
+- d832c66: Fix Pagination active item contrast — the active page number was rendered with `colorPrimary` (`#003973`) on top of `itemActiveBg` (`#003973`), making the digit nearly invisible on a navy background. Added explicit `itemActiveColor` / `itemActiveColorHover` overrides so the active page text is white.
+
 ## 0.5.0
 
 ### Minor Changes
