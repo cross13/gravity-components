@@ -55,6 +55,22 @@ export type { CardProps } from './components/Card'
 // Feedback
 export { useNotification, useMessage } from './components/Notification'
 
+export { NotificationCenter } from './components/NotificationCenter'
+export type {
+  NotificationCenterProps,
+  NotificationCenterLabels,
+  NotificationItem,
+  NotificationType,
+} from './components/NotificationCenter'
+
+export { UserMenu } from './components/UserMenu'
+export type {
+  UserMenuProps,
+  UserMenuItem,
+  UserMenuLabels,
+  UserMenuLanguage,
+} from './components/UserMenu'
+
 export { GravityToaster, toast, useSonner } from './components/Toaster'
 export type {
   ExternalToast,

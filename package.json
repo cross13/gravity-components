@@ -58,7 +58,10 @@
   "size-limit": [
     {
       "path": "dist/index.js",
-      "limit": "25 kB"
+      "limit": "25 kB",
+      "ignore": [
+        "@ant-design/icons"
+      ]
     },
     {
       "path": "dist/theme.js",
