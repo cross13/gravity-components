@@ -1,4 +1,3 @@
-import { Typography } from 'antd'
 import { ArrowUpOutlined, ArrowDownOutlined, MinusOutlined } from '@ant-design/icons'
 import type { StatCardProps } from './StatCard.types'
 import {

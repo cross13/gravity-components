@@ -1,5 +1,4 @@
 import type { UploadProps as AntUploadProps, UploadFile } from 'antd'
-import type { ReactNode } from 'react'
 
 export interface UploadProps extends Omit<AntUploadProps, 'beforeUpload'> {
   /** Accepted file types (MIME types or extensions, e.g., "image/*,.pdf") */

@@ -1,4 +1,4 @@
-import { Upload as AntUpload, App } from 'antd'
+import { Upload as AntUpload } from 'antd'
 import { InboxOutlined, UploadOutlined } from '@ant-design/icons'
 import { Button } from 'antd'
 import type { UploadProps, DraggerProps } from './Upload.types'
