@@ -21,12 +21,14 @@ jobs:
         with:
           fetch-depth: 0
 
+      # Note: no `registry-url` here on purpose. It makes setup-node write an
+      # .npmrc with `_authToken=${NODE_AUTH_TOKEN}`; a stored (even placeholder)
+      # token makes npm skip the OIDC exchange, breaking trusted publishing.
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
           node-version-file: .nvmrc
           cache: npm
-          registry-url: https://registry.npmjs.org
 
       # Trusted publishing (OIDC) requires npm >= 11.5.1; Node 22 ships npm 10.x.
       - name: Upgrade npm for OIDC publishing
