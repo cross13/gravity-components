@@ -67,7 +67,12 @@ export const Chevron = styled.span<{ $open: boolean }>`
  * Avatar
  * ------------------------------------------------------------------ */
 
-export const Avatar = styled.span<{ $size: number; $image: boolean }>`
+export const Avatar = styled.span<{
+  $size: number
+  $image: boolean
+  $background?: string
+  $color?: string
+}>`
   position: relative;
   flex: 0 0 auto;
   display: inline-flex;
@@ -77,8 +82,9 @@ export const Avatar = styled.span<{ $size: number; $image: boolean }>`
   height: ${(p) => p.$size}px;
   border-radius: 50%;
   overflow: hidden;
-  background: ${(p) => (p.$image ? '#e8edf2' : 'linear-gradient(135deg, #003973, #00bbdd)')};
-  color: #fff;
+  background: ${(p) =>
+    p.$background ?? (p.$image ? '#e8edf2' : 'linear-gradient(135deg, #003973, #00bbdd)')};
+  color: ${(p) => p.$color ?? '#fff'};
   font-size: ${(p) => Math.round(p.$size * 0.4)}px;
   font-weight: 700;
   letter-spacing: 0.01em;

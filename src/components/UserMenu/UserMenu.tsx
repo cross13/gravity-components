@@ -47,11 +47,17 @@ function deriveInitials(name: string): string {
   return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
 }
 
-function renderAvatar(avatar: ReactNode, initials: string, size: number) {
+function renderAvatar(
+  avatar: ReactNode,
+  initials: string,
+  size: number,
+  background?: string,
+  color?: string,
+) {
   // String → treat as image URL.
   if (typeof avatar === 'string') {
     return (
-      <Avatar $size={size} $image aria-hidden>
+      <Avatar $size={size} $image $background={background} $color={color} aria-hidden>
         <img src={avatar} alt="" />
       </Avatar>
     )
@@ -59,14 +65,14 @@ function renderAvatar(avatar: ReactNode, initials: string, size: number) {
   // Any other node → render as-is (consumer-provided <Avatar>, icon, etc.).
   if (avatar != null) {
     return (
-      <Avatar $size={size} $image aria-hidden>
+      <Avatar $size={size} $image $background={background} $color={color} aria-hidden>
         {avatar}
       </Avatar>
     )
   }
   // Fallback → gradient initials.
   return (
-    <Avatar $size={size} $image={false} aria-hidden>
+    <Avatar $size={size} $image={false} $background={background} $color={color} aria-hidden>
       {initials}
     </Avatar>
   )
@@ -78,6 +84,8 @@ export function UserMenu({
   role,
   avatar,
   initials,
+  avatarBackground,
+  avatarColor,
   items = [],
   onSelect,
   showLanguageSwitch = true,
@@ -144,7 +152,7 @@ export function UserMenu({
   const panel = (
     <Panel $width={width} role="menu" aria-label={name}>
       <Header>
-        {renderAvatar(avatar, resolvedInitials, 44)}
+        {renderAvatar(avatar, resolvedInitials, 44, avatarBackground, avatarColor)}
         <HeaderInfo>
           <HeaderName>{name}</HeaderName>
           {email != null && <HeaderEmail>{email}</HeaderEmail>}
@@ -231,7 +239,7 @@ export function UserMenu({
         className={className}
         style={style}
       >
-        {renderAvatar(avatar, resolvedInitials, 36)}
+        {renderAvatar(avatar, resolvedInitials, 36, avatarBackground, avatarColor)}
         {showText && (
           <TriggerText>
             <TriggerName>{name}</TriggerName>
