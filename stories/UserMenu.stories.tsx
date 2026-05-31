@@ -167,6 +167,28 @@ export const WithPhoto: Story = {
 }
 
 // ---------------------------------------------------------------------------
+// Custom avatar background + foreground color.
+// ---------------------------------------------------------------------------
+
+export const CustomAvatarColor: Story = {
+  render: (args) => (
+    <DemoPage>
+      <IsolatedStage>
+        <UserMenu {...args} items={MENU_ITEMS} defaultOpen />
+      </IsolatedStage>
+    </DemoPage>
+  ),
+  args: {
+    name: 'Elena Vargas',
+    email: 'elena@gravity.io',
+    role: 'Treasury Lead',
+    avatarBackground: '#7c3aed',
+    avatarColor: '#fde68a',
+    placement: 'bottom',
+  },
+}
+
+// ---------------------------------------------------------------------------
 // Avatar-only trigger (compact top bars).
 // ---------------------------------------------------------------------------
 

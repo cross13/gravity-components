@@ -46,6 +46,14 @@ export interface UserMenuProps {
   avatar?: ReactNode
   /** Explicit initials fallback. Defaults to the first letters of `name`. */
   initials?: string
+  /**
+   * Avatar background — any CSS background value (color or gradient).
+   * Defaults to the brand gradient for initials, or a neutral placeholder
+   * behind an image.
+   */
+  avatarBackground?: string
+  /** Avatar foreground color (initials / icon). Default: white. */
+  avatarColor?: string
 
   /** Custom menu rows (profile, settings, billing…). */
   items?: UserMenuItem[]
