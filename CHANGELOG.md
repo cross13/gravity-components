@@ -1,5 +1,11 @@
 # @crosscode/gravity-components
 
+## 0.7.0
+
+### Minor Changes
+
+- 30ea4b8: UserMenu: add `avatarBackground` and `avatarColor` props to configure the avatar's background (color or gradient) and foreground (initials/icon) color.
+
 ## 0.6.0
 
 ### Minor Changes
