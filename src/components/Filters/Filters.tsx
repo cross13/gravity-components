@@ -6,10 +6,13 @@ import {
   CloseOutlined,
   CheckOutlined,
   CalendarOutlined,
+  SearchOutlined,
+  LoadingOutlined,
 } from '@ant-design/icons'
 import type { Dayjs } from 'dayjs'
 import type {
   FilterField,
+  FilterFieldOption,
   FilterValue,
   FilterValues,
   FiltersLabels,
@@ -39,6 +42,9 @@ import {
   SelectListItem,
   Summary,
   Trailing,
+  TypeaheadBody,
+  TypeaheadList,
+  TypeaheadStatus,
 } from './Filters.styles'
 
 const { RangePicker } = DatePicker
@@ -49,6 +55,8 @@ const DEFAULT_LABELS: Required<FiltersLabels> = {
   apply: 'Apply',
   cancel: 'Cancel',
   empty: '—',
+  searching: 'Searching…',
+  noResults: 'No results',
 }
 
 function isEmptyValue(v: FilterValue): boolean {
@@ -65,6 +73,10 @@ function formatValue(field: FilterField, value: FilterValue): string {
   switch (field.type) {
     case 'select': {
       const opt = field.options.find((o) => o.value === value)
+      return opt?.label ?? String(value ?? '')
+    }
+    case 'typeahead': {
+      const opt = field.options?.find((o) => o.value === value)
       return opt?.label ?? String(value ?? '')
     }
     case 'multi-select': {
@@ -109,6 +121,14 @@ function FilterChip({
   const [open, setOpen] = useState(!!defaultOpen)
   const [draft, setDraft] = useState<FilterValue>(value)
   const justClosedRef = useRef(false)
+  /** Caches labels for typeahead values resolved via async search this session. */
+  const [labelHints, setLabelHints] = useState<Record<string, string>>({})
+
+  const resolveLabel = useCallback((opt: FilterFieldOption) => {
+    setLabelHints((prev) =>
+      prev[opt.value] === opt.label ? prev : { ...prev, [opt.value]: opt.label },
+    )
+  }, [])
 
   useEffect(() => {
     setDraft(value)
@@ -159,7 +179,8 @@ function FilterChip({
   )
 
   const hasValue = !isEmptyValue(value)
-  const valueText = hasValue ? formatValue(field, value) : ''
+  const hint = field.type === 'typeahead' ? labelHints[value as string] : undefined
+  const valueText = hasValue ? (hint ?? formatValue(field, value)) : ''
 
   const editor = renderEditor({
     field,
@@ -167,6 +188,7 @@ function FilterChip({
     setDraft,
     onApply: handleApply,
     onCancel: close,
+    onResolveLabel: resolveLabel,
     labels,
   })
 
@@ -206,12 +228,133 @@ function FilterChip({
   )
 }
 
+type TypeaheadField = Extract<FilterField, { type: 'typeahead' }>
+
+function filterStatic(options: FilterFieldOption[], query: string): FilterFieldOption[] {
+  const q = query.trim().toLowerCase()
+  if (!q) return options
+  return options.filter(
+    (o) => o.label.toLowerCase().includes(q) || o.value.toLowerCase().includes(q),
+  )
+}
+
+function TypeaheadEditor({
+  field,
+  value,
+  onApply,
+  onResolveLabel,
+  labels,
+}: {
+  field: TypeaheadField
+  value: string | null
+  onApply: (v?: FilterValue) => void
+  onResolveLabel: (opt: FilterFieldOption) => void
+  labels: Required<FiltersLabels>
+}) {
+  const { onSearch, options: staticOptions = [], minChars = 0, debounceMs = 250 } = field
+  const [query, setQuery] = useState('')
+  const [results, setResults] = useState<FilterFieldOption[]>(
+    onSearch ? [] : staticOptions,
+  )
+  const [loading, setLoading] = useState(false)
+  /** Bumps on every search dispatch so stale async responses can be ignored. */
+  const requestRef = useRef(0)
+
+  useEffect(() => {
+    if (!onSearch) {
+      setResults(filterStatic(staticOptions, query))
+      return
+    }
+
+    const q = query.trim()
+    if (q.length < minChars) {
+      setResults([])
+      setLoading(false)
+      return
+    }
+
+    const requestId = ++requestRef.current
+    setLoading(true)
+    const timer = setTimeout(() => {
+      Promise.resolve(onSearch(q))
+        .then((opts) => {
+          if (requestRef.current !== requestId) return
+          setResults(opts)
+          setLoading(false)
+        })
+        .catch(() => {
+          if (requestRef.current !== requestId) return
+          setResults([])
+          setLoading(false)
+        })
+    }, debounceMs)
+
+    return () => clearTimeout(timer)
+    // staticOptions is intentionally read fresh each render; field identity drives updates.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query, onSearch, minChars, debounceMs])
+
+  const select = (opt: FilterFieldOption) => {
+    onResolveLabel(opt)
+    onApply(opt.value)
+  }
+
+  // For async fields, don't show "no results" until enough characters were typed.
+  const meetsMinChars = !onSearch || query.trim().length >= minChars
+  const showNoResults = !loading && results.length === 0 && meetsMinChars
+
+  return (
+    <TypeaheadBody>
+      <Input
+        autoFocus
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder={field.placeholder}
+        prefix={<SearchOutlined style={{ color: '#8494a7' }} />}
+        allowClear
+      />
+      {loading && (
+        <TypeaheadStatus>
+          <LoadingOutlined />
+          {labels.searching}
+        </TypeaheadStatus>
+      )}
+      {showNoResults && <TypeaheadStatus>{labels.noResults}</TypeaheadStatus>}
+      {results.length > 0 && (
+        <TypeaheadList role="listbox" aria-label={field.label}>
+          {results.map((opt) => {
+            const active = value === opt.value
+            return (
+              <SelectListItem
+                key={opt.value}
+                role="option"
+                aria-selected={active}
+                $active={active}
+                type="button"
+                onClick={() => select(opt)}
+              >
+                <span>{opt.label}</span>
+                {active && (
+                  <CheckIcon>
+                    <CheckOutlined />
+                  </CheckIcon>
+                )}
+              </SelectListItem>
+            )
+          })}
+        </TypeaheadList>
+      )}
+    </TypeaheadBody>
+  )
+}
+
 function renderEditor({
   field,
   draft,
   setDraft,
   onApply,
   onCancel,
+  onResolveLabel,
   labels,
 }: {
   field: FilterField
@@ -219,6 +362,7 @@ function renderEditor({
   setDraft: (v: FilterValue) => void
   onApply: (v?: FilterValue) => void
   onCancel: () => void
+  onResolveLabel: (opt: FilterFieldOption) => void
   labels: Required<FiltersLabels>
 }): ReactNode {
   switch (field.type) {
@@ -247,6 +391,17 @@ function renderEditor({
             )
           })}
         </SelectList>
+      )
+    }
+    case 'typeahead': {
+      return (
+        <TypeaheadEditor
+          field={field}
+          value={(draft as string | null | undefined) ?? null}
+          onApply={onApply}
+          onResolveLabel={onResolveLabel}
+          labels={labels}
+        />
       )
     }
     case 'multi-select': {
@@ -335,6 +490,7 @@ function renderEditor({
 function fieldTypeIcon(field: FilterField): ReactNode {
   if (field.icon) return field.icon
   if (field.type === 'date-range') return <CalendarOutlined />
+  if (field.type === 'typeahead') return <SearchOutlined />
   return null
 }
 

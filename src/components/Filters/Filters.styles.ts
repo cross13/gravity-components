@@ -246,6 +246,31 @@ export const CheckIcon = styled.span`
   font-size: 12px;
 `
 
+export const TypeaheadBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-width: 260px;
+  padding: 4px;
+  gap: 8px;
+`
+
+export const TypeaheadList = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-height: 280px;
+  overflow-y: auto;
+  gap: 2px;
+`
+
+export const TypeaheadStatus = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  color: #8494a7;
+  font-size: 13px;
+`
+
 export const AddMenuPanel = styled.div`
   display: flex;
   flex-direction: column;
