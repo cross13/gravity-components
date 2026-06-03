@@ -7,9 +7,41 @@ import {
   TagOutlined,
   CalendarOutlined,
   UserOutlined,
+  BankOutlined,
+  GlobalOutlined,
 } from '@ant-design/icons'
 import { Filters } from '../src/components/Filters'
-import type { FilterField, FilterValues } from '../src/components/Filters'
+import type { FilterField, FilterFieldOption, FilterValues } from '../src/components/Filters'
+
+const instruments: FilterFieldOption[] = [
+  { label: 'AL30 — Bonar 2030', value: 'al30' },
+  { label: 'GD30 — Global 2030', value: 'gd30' },
+  { label: 'AE38 — Bonar 2038', value: 'ae38' },
+  { label: 'YPFD — YPF S.A.', value: 'ypfd' },
+  { label: 'GGAL — Grupo Galicia', value: 'ggal' },
+  { label: 'PAMP — Pampa Energía', value: 'pamp' },
+  { label: 'BMA — Banco Macro', value: 'bma' },
+  { label: 'TXAR — Ternium Argentina', value: 'txar' },
+  { label: 'ALUA — Aluar', value: 'alua' },
+  { label: 'CEPU — Central Puerto', value: 'cepu' },
+]
+
+// Simulates a remote lookup (e.g. a /clients?q= endpoint) with latency.
+const allClients: FilterFieldOption[] = Array.from({ length: 120 }, (_, i) => ({
+  label: `Client ${String(i + 1).padStart(3, '0')} — ${
+    ['Acme', 'Globex', 'Initech', 'Umbrella', 'Stark', 'Wayne'][i % 6]
+  }`,
+  value: `client-${i + 1}`,
+}))
+
+function searchClients(query: string): Promise<FilterFieldOption[]> {
+  const q = query.toLowerCase()
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(allClients.filter((c) => c.label.toLowerCase().includes(q)).slice(0, 8))
+    }, 400)
+  })
+}
 
 const fields: FilterField[] = [
   {
@@ -54,6 +86,23 @@ const fields: FilterField[] = [
     type: 'text',
     icon: <TagOutlined />,
     placeholder: 'Ticker (e.g. AL30)',
+  },
+  {
+    key: 'instrument',
+    label: 'Instrument',
+    type: 'typeahead',
+    icon: <BankOutlined />,
+    options: instruments,
+    placeholder: 'Search instruments...',
+  },
+  {
+    key: 'client',
+    label: 'Client',
+    type: 'typeahead',
+    icon: <GlobalOutlined />,
+    onSearch: searchClients,
+    minChars: 1,
+    placeholder: 'Type to search clients...',
   },
   {
     key: 'date',
@@ -110,9 +159,11 @@ const meta: Meta<typeof Filters> = {
     docs: {
       description: {
         component:
-          'Chip-based filter bar. Declare fields with `type: select | multi-select | date-range | text`. ' +
+          'Chip-based filter bar. Declare fields with `type: select | multi-select | typeahead | date-range | text`. ' +
           'Click "Add filter" to pick a field, edit in the popover, Apply to commit. Closing without Apply cancels. ' +
-          'Single-select commits on click. Controlled via `value` + `onChange`, or use `defaultValue` for uncontrolled.',
+          'Single-select and typeahead commit on selection. Typeahead filters search a static `options` list ' +
+          'client-side, or load suggestions remotely via an async `onSearch(query)`. ' +
+          'Controlled via `value` + `onChange`, or use `defaultValue` for uncontrolled.',
       },
     },
   },

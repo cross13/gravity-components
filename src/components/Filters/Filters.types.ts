@@ -36,6 +36,27 @@ export type FilterField =
       placeholder?: string
     })
   | (FilterFieldBase & {
+      type: 'typeahead'
+      /**
+       * Static options. Used when {@link onSearch} is not provided (filtered
+       * client-side as the user types) and to resolve the chip label for a
+       * committed value. When using {@link onSearch}, include any pre-filled
+       * value here so its label can be shown before the popover is opened.
+       */
+      options?: FilterFieldOption[]
+      /**
+       * Async option loader. Called (debounced) as the user types. Return the
+       * options to show. When provided, {@link options} is no longer filtered
+       * client-side — the loader is the single source of suggestions.
+       */
+      onSearch?: (query: string) => FilterFieldOption[] | Promise<FilterFieldOption[]>
+      /** Minimum characters before {@link onSearch} fires. Default: 0. */
+      minChars?: number
+      /** Debounce in ms for {@link onSearch}. Default: 250. */
+      debounceMs?: number
+      placeholder?: string
+    })
+  | (FilterFieldBase & {
       type: 'date-range'
       placeholder?: [string, string]
     })
@@ -55,6 +76,10 @@ export interface FiltersLabels {
   cancel?: string
   /** Empty-state placeholder for chips that have no value yet. Default: "—". */
   empty?: string
+  /** Typeahead message shown while async options load. Default: "Searching…". */
+  searching?: string
+  /** Typeahead message shown when a search returns no options. Default: "No results". */
+  noResults?: string
 }
 
 export interface FiltersProps {
