@@ -22,6 +22,16 @@ export const componentTokens = {
     activeShadow: '0 0 0 3px rgba(0, 187, 221, 0.12)',
     paddingInline: 12,
   },
+  InputNumber: {
+    controlHeight: 32,
+    controlHeightLG: 40,
+    controlHeightSM: 24,
+    borderRadius: 8,
+    activeBorderColor: '#00BBDD',
+    hoverBorderColor: '#80E0F0',
+    activeShadow: '0 0 0 3px rgba(0, 187, 221, 0.12)',
+    paddingInline: 12,
+  },
   Select: {
     controlHeight: 32,
     controlHeightLG: 40,

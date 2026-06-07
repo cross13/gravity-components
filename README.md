@@ -106,8 +106,9 @@ Exported names match `src/index.ts`. Types are exported next to each component w
 | Area        | Exports |
 | ----------- | ------- |
 | **Actions** | `Button` |
-| **Inputs**  | `Input`, `Password`, `Search`, `TextArea` |
+| **Inputs**  | `Input`, `Password`, `Search`, `TextArea`, `InputNumber` |
 | **Pickers** | `Select`, `DatePicker`, `RangePicker` |
+| **Choices** | `Radio` (`Radio.Group`, `Radio.Button`), `Checkbox` (`Checkbox.Group`), `Switch` |
 | **Forms**   | `Form`, `FormItem` |
 | **Overlays** | `Modal`, `Drawer` |
 | **Display** | `Tag`, `Badge` |

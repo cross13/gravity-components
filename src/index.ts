@@ -18,6 +18,18 @@ export type { InputProps, PasswordProps, SearchProps, TextAreaProps } from './co
 export { Select } from './components/Select'
 export type { SelectProps } from './components/Select'
 
+export { InputNumber } from './components/InputNumber'
+export type { InputNumberProps } from './components/InputNumber'
+
+export { Radio, RadioGroup, RadioButton } from './components/Radio'
+export type { RadioProps, RadioGroupProps, RadioButtonProps } from './components/Radio'
+
+export { Checkbox, CheckboxGroup } from './components/Checkbox'
+export type { CheckboxProps, CheckboxGroupProps, CheckboxOptionType } from './components/Checkbox'
+
+export { Switch } from './components/Switch'
+export type { SwitchProps } from './components/Switch'
+
 export { DatePicker, RangePicker } from './components/DatePicker'
 export type { DatePickerProps, RangePickerProps } from './components/DatePicker'
 
