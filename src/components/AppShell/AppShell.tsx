@@ -1,9 +1,16 @@
 import type { AppShellProps } from './AppShell.types'
-import { Inner, Root, ShellContent, ShellHeader } from './AppShell.styles'
+import {
+  Inner,
+  ProjectBar,
+  Root,
+  ShellContent,
+  ShellHeader,
+} from './AppShell.styles'
 
 export function AppShell({
   sidebar,
   header,
+  projectBar,
   children,
   contentStyle,
   headerStyle,
@@ -15,6 +22,7 @@ export function AppShell({
       {sidebar}
       <Inner>
         {header && <ShellHeader style={headerStyle}>{header}</ShellHeader>}
+        {projectBar && <ProjectBar>{projectBar}</ProjectBar>}
         <ShellContent style={contentStyle}>{children}</ShellContent>
       </Inner>
     </Root>

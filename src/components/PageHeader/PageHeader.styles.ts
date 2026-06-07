@@ -28,39 +28,14 @@ export const TitleBlock = styled.div`
   gap: 2px;
 `
 
-export const PageTitle = styled(Title).attrs({ level: 4 })`
+export const PageTitle = styled(Title).attrs({ level: 3 })`
   margin: 0 !important;
+  color: #003973 !important;
 `
 
 export const PageSubtitle = styled(Text)`
   color: #3D5068;
-  font-size: 14px;
-`
-
-export const BackButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border: 1px solid #D5DCE5;
-  border-radius: 6px;
-  background: #FFFFFF;
-  cursor: pointer;
-  color: #3D5068;
-  font-size: 14px;
-  flex-shrink: 0;
-  transition: background 0.1s, border-color 0.1s, color 0.1s;
-
-  &:hover {
-    background: #F0F3F7;
-    border-color: #8494A7;
-    color: #0D1B2A;
-  }
-
-  &:active {
-    background: #E8EDF2;
-  }
+  font-size: 12px;
 `
 
 export const StyledTabs = styled(Tabs)`

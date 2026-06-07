@@ -62,7 +62,7 @@ const brandPresets: BrandPreset[] = [
       colorBgLayout: '#F0F3F7',
       colorTextBase: '#0D1B2A',
       colorBorder: '#D5DCE5',
-      controlHeight: 40,
+      controlHeight: 32,
     },
   },
   {

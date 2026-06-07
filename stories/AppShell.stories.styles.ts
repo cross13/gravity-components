@@ -10,13 +10,13 @@ export const HeaderBar = styled.div`
 `
 
 export const HeaderDate = styled(Typography.Text)`
-  color: #8494a7;
+  color: rgba(255, 255, 255, 0.65);
   font-size: 13px;
 `
 
 export const HeaderBell = styled(BellOutlined)`
   font-size: 18px;
-  color: #8494a7;
+  color: rgba(255, 255, 255, 0.75);
   cursor: pointer;
 `
 
@@ -37,11 +37,31 @@ export const UserLines = styled.div`
 export const UserName = styled(Typography.Text).attrs({ strong: true })`
   font-size: 13px;
   display: block;
+  color: #ffffff;
 `
 
 export const UserRole = styled(Typography.Text)`
   font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+`
+
+export const ProjectBarRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+`
+
+export const ProjectLabel = styled(Typography.Text)`
   color: #8494a7;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+`
+
+export const ProjectName = styled(Typography.Text).attrs({ strong: true })`
+  font-size: 13px;
+  color: #0d1b2a;
 `
 
 export const TxnRef = styled(Typography.Text).attrs({ strong: true })`

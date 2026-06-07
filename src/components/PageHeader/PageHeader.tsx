@@ -1,5 +1,6 @@
 import { Breadcrumb, Space } from 'antd'
 import { ArrowLeftOutlined } from '@ant-design/icons'
+import { Button } from '../Button'
 import type { PageHeaderProps } from './PageHeader.types'
 import {
   Root,
@@ -8,7 +9,6 @@ import {
   TitleBlock,
   PageTitle,
   PageSubtitle,
-  BackButton,
   StyledTabs,
 } from './PageHeader.styles'
 
@@ -28,9 +28,12 @@ export function PageHeader({
       <TitleRow>
         <TitleGroup>
           {onBack && (
-            <BackButton onClick={onBack} aria-label="Go back">
-              <ArrowLeftOutlined />
-            </BackButton>
+            <Button
+              type="link"
+              onClick={onBack}
+              aria-label="Go back"
+              icon={<ArrowLeftOutlined />}
+            />
           )}
           <TitleBlock>
             <PageTitle>{title}</PageTitle>

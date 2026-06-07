@@ -35,6 +35,6 @@ export const defaultTokens: GravityTokens = {
     '0 1px 3px rgba(0, 25, 51, 0.05), 0 0 0 1px rgba(0, 25, 51, 0.03)',
   boxShadowSecondary:
     '0 8px 24px -4px rgba(0, 25, 51, 0.12), 0 0 0 1px rgba(0, 25, 51, 0.03)',
-  controlHeight: 40,
+  controlHeight: 32,
   lineWidth: 1,
 }

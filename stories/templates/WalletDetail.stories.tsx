@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React, { useMemo, useState } from 'react'
 import { Tag, Space } from 'antd'
+import type { TabsProps } from 'antd'
 import {
   DownloadOutlined,
   PlusOutlined,
@@ -40,6 +41,7 @@ import {
   ProfilePill,
   StatGrid,
   ChartSection,
+  SectionTabs,
   TabPanel,
   TabHeader,
   TabHeaderTitle,
@@ -443,12 +445,12 @@ function WalletDetailPage() {
     [currency],
   )
 
-  const tabItems = [
-    { key: 'resumen', label: 'Resumen' },
-    { key: 'movimientos', label: 'Movimientos' },
-    { key: 'transacciones', label: 'Transacciones' },
-    { key: 'resultados', label: 'Resultados' },
-    { key: 'posiciones', label: 'Posiciones' },
+  const tabItems: TabsProps['items'] = [
+    { key: 'resumen', label: 'Resumen', children: <ResumenPanel currency={currency} /> },
+    { key: 'movimientos', label: 'Movimientos', children: <MovimientosPanel currency={currency} /> },
+    { key: 'transacciones', label: 'Transacciones', children: <TransaccionesPanel currency={currency} /> },
+    { key: 'resultados', label: 'Resultados', children: <ResultadosPanel currency={currency} /> },
+    { key: 'posiciones', label: 'Posiciones', children: <PosicionesPanel currency={currency} /> },
   ]
 
   const profileTone = profileToneMap[walletSummary.walletProfile]
@@ -492,11 +494,6 @@ function WalletDetailPage() {
               </Button>
             </>
           }
-          tabs={{
-            items: tabItems,
-            activeKey: activeTab,
-            onChange: (k) => setActiveTab(k as TabKey),
-          }}
         />
 
         <StatGrid>
@@ -542,11 +539,11 @@ function WalletDetailPage() {
           />
         </ChartSection>
 
-        {activeTab === 'resumen' && <ResumenPanel currency={currency} />}
-        {activeTab === 'movimientos' && <MovimientosPanel currency={currency} />}
-        {activeTab === 'transacciones' && <TransaccionesPanel currency={currency} />}
-        {activeTab === 'resultados' && <ResultadosPanel currency={currency} />}
-        {activeTab === 'posiciones' && <PosicionesPanel currency={currency} />}
+        <SectionTabs
+          items={tabItems}
+          activeKey={activeTab}
+          onChange={(k) => setActiveTab(k as TabKey)}
+        />
       </PageContainer>
     </PageBackground>
   )

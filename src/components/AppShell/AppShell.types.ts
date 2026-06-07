@@ -5,6 +5,8 @@ export interface AppShellProps {
   sidebar?: ReactNode
   /** Header content */
   header?: ReactNode
+  /** Optional bar rendered full-width directly below the header (e.g. a project switcher) */
+  projectBar?: ReactNode
   /** Main content area */
   children: ReactNode
   /** Style overrides for the content area */
