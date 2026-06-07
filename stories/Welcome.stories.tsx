@@ -145,7 +145,7 @@ function ThemeShowcase() {
             { label: 'Success', value: '#00B67A' },
             { label: 'Warning', value: '#F5A623' },
             { label: 'Error', value: '#E62626' },
-            { label: 'Sidebar', value: '#001224' },
+            { label: 'Topbar', value: '#003973' },
             { label: 'Layout', value: '#F0F3F7' },
           ].map((c) => (
             <PaletteCell key={c.label}>

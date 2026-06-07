@@ -34,7 +34,7 @@ export const aliasTokens = {
   motionDurationMid: '0.2s',
   motionDurationSlow: '0.3s',
 
-  controlHeight: 40,
-  controlHeightLG: 48,
-  controlHeightSM: 32,
+  controlHeight: 32,
+  controlHeightLG: 40,
+  controlHeightSM: 24,
 }

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Tabs } from 'antd'
 
 export const PageBackground = styled.div`
   background: #f0f3f7;
@@ -47,6 +48,16 @@ export const StatGrid = styled.div`
 
 export const ChartSection = styled.section`
   margin-bottom: 20px;
+`
+
+export const SectionTabs = styled(Tabs)`
+  .ant-tabs-nav {
+    margin: 0 0 16px;
+  }
+
+  .ant-tabs-nav::before {
+    border-bottom-color: #e8edf2;
+  }
 `
 
 export const TabPanel = styled.section`

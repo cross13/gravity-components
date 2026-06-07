@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React, { useState } from 'react'
-import { Typography, Space, Dropdown, Row, Col, Table, Tag as AntTag } from 'antd'
+import { Space, Dropdown, Row, Col, Table, Tag as AntTag, Select } from 'antd'
 import {
   DashboardOutlined,
   UserOutlined,
@@ -25,6 +25,9 @@ import {
   HeaderBar,
   HeaderBell,
   HeaderDate,
+  ProjectBarRow,
+  ProjectLabel,
+  ProjectName,
   TransactionsCard,
   TxnAmount,
   TxnRef,
@@ -111,6 +114,30 @@ const HeaderContent = () => (
   </HeaderBar>
 )
 
+const ProjectBarContent = () => (
+  <ProjectBarRow>
+    <ProjectLabel>Project</ProjectLabel>
+    <Select
+      size="small"
+      defaultValue="atlas"
+      variant="borderless"
+      style={{ minWidth: 180 }}
+      options={[
+        { value: 'atlas', label: 'Atlas Capital Fund' },
+        { value: 'meridian', label: 'Meridian Growth' },
+        { value: 'vanguard', label: 'Vanguard Reserve' },
+      ]}
+    />
+    <AntTag color="cyan">Live</AntTag>
+    <Space style={{ marginLeft: 'auto' }} size="small">
+      <ProjectName>Q2 2026</ProjectName>
+      <Button size="small" icon={<PlusOutlined />}>
+        New Project
+      </Button>
+    </Space>
+  </ProjectBarRow>
+)
+
 const recentTransactions = [
   { key: '1', id: 'TXN-9401', client: 'Martin Garcia', amount: '$45,200', type: 'Buy', status: 'settled', date: 'Mar 28' },
   { key: '2', id: 'TXN-9400', client: 'Sofia Fernandez', amount: '$128,500', type: 'Sell', status: 'settled', date: 'Mar 27' },
@@ -175,6 +202,7 @@ export const Default: Story = {
           />
         }
         header={<HeaderContent />}
+        projectBar={<ProjectBarContent />}
       >
         <PageHeader
           title="Dashboard"

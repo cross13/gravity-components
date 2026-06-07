@@ -40,7 +40,7 @@ export function Sidebar({
       width={width}
       collapsedWidth={collapsedWidth}
       className={className}
-      theme="dark"
+      theme="light"
       style={style}
     >
       <LogoRow $collapsed={collapsed}>
@@ -49,7 +49,7 @@ export function Sidebar({
 
       <MenuWrap>
         <StyledMenu
-          theme="dark"
+          theme="light"
           mode="inline"
           selectedKeys={selectedKey ? [selectedKey] : undefined}
           items={items}
