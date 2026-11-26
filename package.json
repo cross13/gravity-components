@@ -132,6 +132,7 @@
     "vite": "$vite",
     "storybook": {
       "vite-plus": "$vite-plus"
-    }
+    },
+    "@joshwooding/vite-plugin-react-docgen-typescript": "0.9.1"
   }
 }
