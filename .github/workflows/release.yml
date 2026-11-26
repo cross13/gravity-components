@@ -44,11 +44,9 @@ jobs:
         run: npm run test
 
       - name: Create Release Pull Request or Publish to npm
-        uses: changesets/action@v1
+        uses: changesets/action@v2
         with:
-          publish: npm run release
-          version: npm run version-packages
-          title: 'chore: version packages'
-          commit: 'chore: version packages'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          publish-script: npm run release
+          version-script: npm run version-packages
+          pr-title: 'chore: version packages'
+          commit-message: 'chore: version packages'
