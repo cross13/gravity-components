@@ -62,9 +62,7 @@ function TimelineWithCurrencyToggle({
 
 export const AdminTodosLosClientes: StoryObj<typeof AdvisorTotalTimelineWidget> = {
   name: 'Línea del tiempo — Admin (todos los clientes)',
-  render: () => (
-    <TimelineWithCurrencyToggle baseDataArs={adminTimelineArs} viewerRole="admin" />
-  ),
+  render: () => <TimelineWithCurrencyToggle baseDataArs={adminTimelineArs} viewerRole="admin" />,
 }
 
 export const AdvisorSusClientes: StoryObj<typeof AdvisorTotalTimelineWidget> = {

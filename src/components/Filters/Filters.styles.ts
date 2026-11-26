@@ -54,8 +54,7 @@ export const ChipRoot = styled.button<{ $hasValue: boolean; $open: boolean }>`
   background: ${({ $hasValue }) => ($hasValue ? '#ffffff' : '#f5f8fb')};
   border: 1px solid ${({ $hasValue }) => ($hasValue ? '#d5dce5' : '#e8edf2')};
   color: #0d1b2a;
-  box-shadow: ${({ $open }) =>
-    $open ? '0 0 0 3px rgba(0, 187, 221, 0.18)' : 'none'};
+  box-shadow: ${({ $open }) => ($open ? '0 0 0 3px rgba(0, 187, 221, 0.18)' : 'none')};
   border-color: ${({ $open, $hasValue }) =>
     $open ? '#00bbdd' : $hasValue ? '#d5dce5' : '#e8edf2'};
 

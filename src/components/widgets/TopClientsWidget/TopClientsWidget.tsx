@@ -111,9 +111,9 @@ export function TopClientsWidget({
               <tbody>
                 {rows.map((client, index) => {
                   const rank = index + 1
-                  const tier = rank === 1 ? 'gold' : rank === 2 ? 'silver' : rank === 3 ? 'bronze' : 'rest'
-                  const arsShare =
-                    rankingTotals.ars > 0 ? client.amountArs / rankingTotals.ars : 0
+                  const tier =
+                    rank === 1 ? 'gold' : rank === 2 ? 'silver' : rank === 3 ? 'bronze' : 'rest'
+                  const arsShare = rankingTotals.ars > 0 ? client.amountArs / rankingTotals.ars : 0
                   return (
                     <S.TbodyRow key={client.id} $hover>
                       <S.Td $align="center">

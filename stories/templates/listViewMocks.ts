@@ -31,14 +31,48 @@ export interface TransactionRow {
 }
 
 const FIRST_NAMES = [
-  'Martín', 'Sofía', 'Ricardo', 'Camila', 'Juan', 'Valentina', 'Diego',
-  'Lucía', 'Federico', 'Paula', 'Tomás', 'Florencia', 'Mateo', 'Agustina',
-  'Nicolás', 'Carolina', 'Alejandro', 'Belén', 'Joaquín', 'Mariana',
+  'Martín',
+  'Sofía',
+  'Ricardo',
+  'Camila',
+  'Juan',
+  'Valentina',
+  'Diego',
+  'Lucía',
+  'Federico',
+  'Paula',
+  'Tomás',
+  'Florencia',
+  'Mateo',
+  'Agustina',
+  'Nicolás',
+  'Carolina',
+  'Alejandro',
+  'Belén',
+  'Joaquín',
+  'Mariana',
 ]
 const LAST_NAMES = [
-  'García', 'Fernández', 'Becerra', 'López', 'Martínez', 'Ruiz', 'Acosta',
-  'Herrera', 'Núñez', 'Domínguez', 'Suárez', 'Gómez', 'Pérez', 'Romero',
-  'Torres', 'Castro', 'Vega', 'Molina', 'Sosa', 'Álvarez',
+  'García',
+  'Fernández',
+  'Becerra',
+  'López',
+  'Martínez',
+  'Ruiz',
+  'Acosta',
+  'Herrera',
+  'Núñez',
+  'Domínguez',
+  'Suárez',
+  'Gómez',
+  'Pérez',
+  'Romero',
+  'Torres',
+  'Castro',
+  'Vega',
+  'Molina',
+  'Sosa',
+  'Álvarez',
 ]
 const ADVISORS = ['María López', 'Pablo Quiroga', 'Inés Bravo', 'Eduardo Sánchez']
 const WALLETS: { label: string; tone: ClientRow['walletTone'] }[] = [
@@ -63,9 +97,10 @@ export const mockClients: ClientRow[] = Array.from({ length: 64 }, (_, i) => {
     clientId: `CL-${String(2024_001 + i)}`,
     firstName,
     lastName,
-    email: `${firstName.toLowerCase()}.${lastName.toLowerCase()}@${i % 2 === 0 ? 'mail.com' : 'empresa.com.ar'}`
-      .normalize('NFD')
-      .replace(/[̀-ͯ]/g, ''),
+    email:
+      `${firstName.toLowerCase()}.${lastName.toLowerCase()}@${i % 2 === 0 ? 'mail.com' : 'empresa.com.ar'}`
+        .normalize('NFD')
+        .replace(/[̀-ͯ]/g, ''),
     advisor: ADVISORS[i % ADVISORS.length],
     walletLabel: wallet.label,
     walletTone: wallet.tone,
@@ -85,8 +120,7 @@ export const mockTransactions: TransactionRow[] = Array.from({ length: 92 }, (_,
   const asset = isAssetMove ? TX_ASSETS[i % TX_ASSETS.length] : '—'
   const qty = isAssetMove ? Math.round(50 + ((i * 173) % 1500)) : null
   const baseAmount = Math.round(50_000 + ((i * 87_413) % 12_000_000))
-  const amountArs =
-    type === 'withdrawal' || type === 'fee' ? -baseAmount : baseAmount
+  const amountArs = type === 'withdrawal' || type === 'fee' ? -baseAmount : baseAmount
   const month = ((i * 2) % 12) + 1
   const day = ((i * 11) % 27) + 1
   const firstName = FIRST_NAMES[i % FIRST_NAMES.length]

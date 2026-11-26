@@ -39,9 +39,7 @@ export const States: Story = {
 
 export const Group: Story = {
   parameters: { controls: { disable: true } },
-  render: () => (
-    <Checkbox.Group defaultValue={['read']} options={permissionOptions} />
-  ),
+  render: () => <Checkbox.Group defaultValue={['read']} options={permissionOptions} />,
 }
 
 export const CheckAll: Story = {
@@ -52,8 +50,7 @@ export const CheckAll: Story = {
       const all = permissionOptions.map((o) => o.value)
       const allChecked = checked.length === all.length
       const indeterminate = checked.length > 0 && checked.length < all.length
-      const onCheckAll: CheckboxProps['onChange'] = (e) =>
-        setChecked(e.target.checked ? all : [])
+      const onCheckAll: CheckboxProps['onChange'] = (e) => setChecked(e.target.checked ? all : [])
       return (
         <Space direction="vertical" size="small">
           <Checkbox indeterminate={indeterminate} checked={allChecked} onChange={onCheckAll}>

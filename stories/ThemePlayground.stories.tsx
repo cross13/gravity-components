@@ -170,11 +170,7 @@ function ColorSwatch({
 }) {
   return (
     <TP.ColorSwatchRow>
-      <TP.ColorPickerInput
-        type="color"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-      />
+      <TP.ColorPickerInput type="color" value={value} onChange={(e) => onChange(e.target.value)} />
       <TP.ColorSwatchMeta>
         <TP.ColorSwatchLabel>{label}</TP.ColorSwatchLabel>
         <TP.ColorSwatchHex>{value}</TP.ColorSwatchHex>
@@ -418,21 +414,9 @@ function ComponentShowcase({ tokens }: { tokens: Partial<GravityTokens> }) {
               description="Your changes have been saved successfully."
               showIcon
             />
-            <Alert
-              type="info"
-              title="New update available"
-              showIcon
-            />
-            <Alert
-              type="warning"
-              title="Storage running low"
-              showIcon
-            />
-            <Alert
-              type="error"
-              title="Connection failed"
-              showIcon
-            />
+            <Alert type="info" title="New update available" showIcon />
+            <Alert type="warning" title="Storage running low" showIcon />
+            <Alert type="error" title="Connection failed" showIcon />
           </TP.AlertsStack>
         </Card>
 
@@ -455,28 +439,20 @@ function ComponentShowcase({ tokens }: { tokens: Partial<GravityTokens> }) {
                 label: 'Overview',
                 children: (
                   <Paragraph type="secondary">
-                    This is the overview panel. Your brand colors are applied
-                    across all tab states and indicators.
+                    This is the overview panel. Your brand colors are applied across all tab states
+                    and indicators.
                   </Paragraph>
                 ),
               },
               {
                 key: '2',
                 label: 'Analytics',
-                children: (
-                  <Paragraph type="secondary">
-                    Analytics content goes here.
-                  </Paragraph>
-                ),
+                children: <Paragraph type="secondary">Analytics content goes here.</Paragraph>,
               },
               {
                 key: '3',
                 label: 'Settings',
-                children: (
-                  <Paragraph type="secondary">
-                    Settings panel content.
-                  </Paragraph>
-                ),
+                children: <Paragraph type="secondary">Settings panel content.</Paragraph>,
               },
             ]}
           />
@@ -488,9 +464,8 @@ function ComponentShowcase({ tokens }: { tokens: Partial<GravityTokens> }) {
           <TP.TypoTitle4>Heading Level 4</TP.TypoTitle4>
           <Paragraph>
             Body text renders with your configured <Text strong>font size</Text>,{' '}
-            <Text type="secondary">secondary color</Text>, and{' '}
-            <Text code>code</Text> styles. The theme tokens control everything
-            from <a href="#">link colors</a> to text hierarchy.
+            <Text type="secondary">secondary color</Text>, and <Text code>code</Text> styles. The
+            theme tokens control everything from <a href="#">link colors</a> to text hierarchy.
           </Paragraph>
           <Paragraph type="secondary">
             Secondary paragraph text for descriptions, help text, and metadata.
@@ -555,9 +530,7 @@ function ThemePlayground() {
       <TP.EditorSidebar>
         <TP.EditorHeader>
           <TP.EditorTitle>Theme Playground</TP.EditorTitle>
-          <TP.EditorSubtitle>
-            Customize tokens to preview your brand.
-          </TP.EditorSubtitle>
+          <TP.EditorSubtitle>Customize tokens to preview your brand.</TP.EditorSubtitle>
         </TP.EditorHeader>
 
         {/* Brand Presets */}
@@ -646,9 +619,7 @@ function ThemePlayground() {
 
         {/* Sizing */}
         <TP.EditorSection>
-          <TP.EditorSectionHeadingLoose>
-            Sizing & Shape
-          </TP.EditorSectionHeadingLoose>
+          <TP.EditorSectionHeadingLoose>Sizing & Shape</TP.EditorSectionHeadingLoose>
           <TP.SliderList>
             <SliderRow
               label="Border Radius"

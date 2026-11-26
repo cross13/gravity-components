@@ -21,13 +21,7 @@ const meta: Meta<typeof StatCard> = {
 export default meta
 type Story = StoryObj<typeof StatCard>
 
-const SparklineBars = ({
-  color,
-  heights,
-}: {
-  color: string
-  heights: number[]
-}) => (
+const SparklineBars = ({ color, heights }: { color: string; heights: number[] }) => (
   <SparklineRow>
     {heights.map((h, i) => (
       <SparklineBar
@@ -65,10 +59,7 @@ export const WithAccentGradients: Story = {
           trendValue="+14.2% vs last quarter"
           accentColor="linear-gradient(90deg, #003973, #0077FF)"
           sparkline={
-            <SparklineBars
-              color="#003973"
-              heights={[40, 55, 45, 65, 55, 75, 60, 85, 72, 100]}
-            />
+            <SparklineBars color="#003973" heights={[40, 55, 45, 65, 55, 75, 60, 85, 72, 100]} />
           }
         />
       </Col>
@@ -80,10 +71,7 @@ export const WithAccentGradients: Story = {
           trendValue="+6.8% from last month"
           accentColor="linear-gradient(90deg, #00BBDD, #00D4FA)"
           sparkline={
-            <SparklineBars
-              color="#00BBDD"
-              heights={[50, 55, 65, 58, 72, 68, 80, 78, 92, 88]}
-            />
+            <SparklineBars color="#00BBDD" heights={[50, 55, 65, 58, 72, 68, 80, 78, 92, 88]} />
           }
         />
       </Col>
@@ -96,10 +84,7 @@ export const WithAccentGradients: Story = {
           trendValue="+22.5% vs last week"
           accentColor="linear-gradient(90deg, #00B67A, #34D399)"
           sparkline={
-            <SparklineBars
-              color="#00B67A"
-              heights={[30, 60, 40, 80, 50, 70, 65, 95, 85, 100]}
-            />
+            <SparklineBars color="#00B67A" heights={[30, 60, 40, 80, 50, 70, 65, 95, 85, 100]} />
           }
         />
       </Col>
@@ -112,10 +97,7 @@ export const WithAccentGradients: Story = {
           trendValue="-1.3% from last quarter"
           accentColor="linear-gradient(90deg, #F5A623, #FBBF24)"
           sparkline={
-            <SparklineBars
-              color="#F5A623"
-              heights={[90, 85, 80, 78, 70, 72, 65, 60, 55, 50]}
-            />
+            <SparklineBars color="#F5A623" heights={[90, 85, 80, 78, 70, 72, 65, 60, 55, 50]} />
           }
         />
       </Col>

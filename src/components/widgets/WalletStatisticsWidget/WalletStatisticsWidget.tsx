@@ -2,7 +2,10 @@ import { useMemo } from 'react'
 import { Segmented } from 'antd'
 import { Card } from '../../Card'
 import type { DashboardCurrency } from '../dashboardTypes'
-import type { WalletStatisticsWidgetProps, WalletStatisticRow } from './WalletStatisticsWidget.types'
+import type {
+  WalletStatisticsWidgetProps,
+  WalletStatisticRow,
+} from './WalletStatisticsWidget.types'
 import * as S from './WalletStatisticsWidget.styles'
 
 const DEFAULT_TONES: WalletStatisticRow['tone'][] = [

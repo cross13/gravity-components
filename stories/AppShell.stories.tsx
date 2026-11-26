@@ -139,11 +139,51 @@ const ProjectBarContent = () => (
 )
 
 const recentTransactions = [
-  { key: '1', id: 'TXN-9401', client: 'Martin Garcia', amount: '$45,200', type: 'Buy', status: 'settled', date: 'Mar 28' },
-  { key: '2', id: 'TXN-9400', client: 'Sofia Fernandez', amount: '$128,500', type: 'Sell', status: 'settled', date: 'Mar 27' },
-  { key: '3', id: 'TXN-9399', client: 'Ricardo Becerra', amount: '$12,800', type: 'Buy', status: 'pending', date: 'Mar 27' },
-  { key: '4', id: 'TXN-9398', client: 'Camila Lopez', amount: '$8,340', type: 'Transfer', status: 'failed', date: 'Mar 26' },
-  { key: '5', id: 'TXN-9397', client: 'Juan Martinez', amount: '$256,000', type: 'Sell', status: 'processing', date: 'Mar 25' },
+  {
+    key: '1',
+    id: 'TXN-9401',
+    client: 'Martin Garcia',
+    amount: '$45,200',
+    type: 'Buy',
+    status: 'settled',
+    date: 'Mar 28',
+  },
+  {
+    key: '2',
+    id: 'TXN-9400',
+    client: 'Sofia Fernandez',
+    amount: '$128,500',
+    type: 'Sell',
+    status: 'settled',
+    date: 'Mar 27',
+  },
+  {
+    key: '3',
+    id: 'TXN-9399',
+    client: 'Ricardo Becerra',
+    amount: '$12,800',
+    type: 'Buy',
+    status: 'pending',
+    date: 'Mar 27',
+  },
+  {
+    key: '4',
+    id: 'TXN-9398',
+    client: 'Camila Lopez',
+    amount: '$8,340',
+    type: 'Transfer',
+    status: 'failed',
+    date: 'Mar 26',
+  },
+  {
+    key: '5',
+    id: 'TXN-9397',
+    client: 'Juan Martinez',
+    amount: '$256,000',
+    type: 'Sell',
+    status: 'processing',
+    date: 'Mar 25',
+  },
 ]
 
 const txnColumns = [
@@ -225,13 +265,7 @@ export const Default: Story = {
             <StatCard label="Daily Volume" value="$2.1M" trend="up" trendValue="+22.5%" />
           </Col>
           <Col span={6}>
-            <StatCard
-              label="Avg. Return"
-              value="8.7"
-              suffix="%"
-              trend="down"
-              trendValue="-1.3%"
-            />
+            <StatCard label="Avg. Return" value="8.7" suffix="%" trend="down" trendValue="-1.3%" />
           </Col>
         </Row>
 

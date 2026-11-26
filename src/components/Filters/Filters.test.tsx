@@ -11,7 +11,13 @@ const instruments: FilterFieldOption[] = [
   { label: 'YPFD — YPF S.A.', value: 'ypfd' },
 ]
 
-function Harness({ fields, onChange }: { fields: FilterField[]; onChange?: (v: FilterValues) => void }) {
+function Harness({
+  fields,
+  onChange,
+}: {
+  fields: FilterField[]
+  onChange?: (v: FilterValues) => void
+}) {
   const [value, setValue] = useState<FilterValues>({})
   return (
     <Filters

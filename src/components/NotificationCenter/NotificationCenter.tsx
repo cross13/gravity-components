@@ -11,7 +11,11 @@ import {
   InfoCircleFilled,
   WarningFilled,
 } from '@ant-design/icons'
-import type { NotificationCenterProps, NotificationItem, NotificationType } from './NotificationCenter.types'
+import type {
+  NotificationCenterProps,
+  NotificationItem,
+  NotificationType,
+} from './NotificationCenter.types'
 import {
   ActionButton,
   BellButton,
@@ -61,7 +65,8 @@ const DEFAULT_LABELS = {
 
 /** Lightweight relative-time formatter — avoids pulling a dayjs plugin into the bundle. */
 function formatRelative(value: Date | number | string): string {
-  const then = value instanceof Date ? value.getTime() : typeof value === 'number' ? value : Date.parse(value)
+  const then =
+    value instanceof Date ? value.getTime() : typeof value === 'number' ? value : Date.parse(value)
   if (Number.isNaN(then)) return String(value)
   const diff = then - Date.now()
   const abs = Math.abs(diff)
@@ -226,14 +231,14 @@ export function NotificationCenter({
           <Spin />
         </StateWrap>
       ) : visibleItems.length === 0 ? (
-        emptyContent ?? (
+        (emptyContent ?? (
           <StateWrap>
             <EmptyIconWrap>
               <InboxOutlined />
             </EmptyIconWrap>
             <EmptyText>{t.empty}</EmptyText>
           </StateWrap>
-        )
+        ))
       ) : (
         <List $maxHeight={listMaxHeight}>
           {visibleItems.map((item) => {

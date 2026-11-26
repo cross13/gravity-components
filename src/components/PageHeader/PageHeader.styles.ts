@@ -34,7 +34,7 @@ export const PageTitle = styled(Title).attrs({ level: 3 })`
 `
 
 export const PageSubtitle = styled(Text)`
-  color: #3D5068;
+  color: #3d5068;
   font-size: 12px;
 `
 

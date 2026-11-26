@@ -19,9 +19,7 @@ export interface GravityProviderProps {
   children: ReactNode
 }
 
-function renderToaster(
-  toaster: GravityProviderProps['toaster'],
-): ReactNode {
+function renderToaster(toaster: GravityProviderProps['toaster']): ReactNode {
   if (toaster === false) return null
   const props = toaster === true || toaster === undefined ? {} : toaster
   return <GravityToaster {...props} />

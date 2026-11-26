@@ -28,7 +28,7 @@ export function DataGrid<RecordType extends object = Record<string, unknown>>({
   const [searchQuery, setSearchQuery] = useState('')
 
   const isServerSide = !!onFetch
-  const displayData = isServerSide ? data : controlledData ?? []
+  const displayData = isServerSide ? data : (controlledData ?? [])
   const isLoading = controlledLoading ?? loading
 
   const fetchData = useCallback(
@@ -109,11 +109,7 @@ export function DataGrid<RecordType extends object = Record<string, unknown>>({
             : { pageSize, showSizeChanger: true, showTotal: (t) => `${t} total records` }
         }
         locale={{
-          emptyText: (
-            <AntEmpty description={emptyText}>
-              {emptyAction}
-            </AntEmpty>
-          ),
+          emptyText: <AntEmpty description={emptyText}>{emptyAction}</AntEmpty>,
         }}
       />
     </Root>

@@ -1,11 +1,5 @@
 import type { AppShellProps } from './AppShell.types'
-import {
-  Inner,
-  ProjectBar,
-  Root,
-  ShellContent,
-  ShellHeader,
-} from './AppShell.styles'
+import { Inner, ProjectBar, Root, ShellContent, ShellHeader } from './AppShell.styles'
 
 export function AppShell({
   sidebar,

@@ -1,11 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { Space, Col, Input, Tag as AntTag, Switch, Avatar } from 'antd'
-import {
-  CheckCircleOutlined,
-  SearchOutlined,
-  ArrowRightOutlined,
-} from '@ant-design/icons'
+import { CheckCircleOutlined, SearchOutlined, ArrowRightOutlined } from '@ant-design/icons'
 import { Button } from '../src/components/Button'
 import { Card } from '../src/components/Card'
 import { StatCard } from '../src/components/StatCard'
@@ -38,8 +34,8 @@ function ThemeShowcase() {
       <HeroBlock>
         <HeroTitle>Gravity Components</HeroTitle>
         <HeroLead>
-          A premium admin UI kit built on Ant Design v6 — featuring a deep navy &amp; cyan
-          palette inspired by professional financial interfaces.
+          A premium admin UI kit built on Ant Design v6 — featuring a deep navy &amp; cyan palette
+          inspired by professional financial interfaces.
         </HeroLead>
       </HeroBlock>
 

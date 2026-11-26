@@ -6,12 +6,7 @@ export interface FilterFieldOption {
   value: string
 }
 
-export type FilterValue =
-  | string
-  | string[]
-  | [Dayjs | null, Dayjs | null]
-  | null
-  | undefined
+export type FilterValue = string | string[] | [Dayjs | null, Dayjs | null] | null | undefined
 
 export type FilterValues = Record<string, FilterValue>
 

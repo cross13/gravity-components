@@ -43,14 +43,7 @@ const COLORS = {
   bg: '#F0F3F7',
 }
 
-const PIE_COLORS = [
-  COLORS.navy,
-  COLORS.cyan,
-  COLORS.blue,
-  COLORS.green,
-  COLORS.amber,
-  COLORS.red,
-]
+const PIE_COLORS = [COLORS.navy, COLORS.cyan, COLORS.blue, COLORS.green, COLORS.amber, COLORS.red]
 
 /* ─── Financial Data ─────────────────────────── */
 
@@ -95,7 +88,7 @@ const revenueByProduct = [
 
 const allocationData = [
   { name: 'US Equities', value: 35 },
-  { name: 'Int\'l Equities', value: 20 },
+  { name: "Int'l Equities", value: 20 },
   { name: 'Fixed Income', value: 25 },
   { name: 'Real Estate', value: 8 },
   { name: 'Commodities', value: 7 },
@@ -178,14 +171,8 @@ export const PortfolioPerformance: StoryObj = {
             tickFormatter={(v) => `${v}%`}
             domain={[0, 'auto']}
           />
-          <Tooltip
-            {...tooltipStyle}
-            formatter={(value: number) => [`${value}%`, undefined]}
-          />
-          <Legend
-            iconType="circle"
-            wrapperStyle={{ fontSize: 12, paddingTop: 12 }}
-          />
+          <Tooltip {...tooltipStyle} formatter={(value: number) => [`${value}%`, undefined]} />
+          <Legend iconType="circle" wrapperStyle={{ fontSize: 12, paddingTop: 12 }} />
           <Line
             type="monotone"
             dataKey="portfolio"
@@ -296,18 +283,11 @@ export const RevenueByProduct: StoryObj = {
           <Tooltip
             {...tooltipStyle}
             formatter={(value: number, name: string) =>
-              name === 'Revenue'
-                ? [`$${value}M`, name]
-                : [`${value}%`, name]
+              name === 'Revenue' ? [`$${value}M`, name] : [`${value}%`, name]
             }
           />
           <Legend iconType="circle" wrapperStyle={{ fontSize: 12, paddingTop: 12 }} />
-          <Bar
-            dataKey="revenue"
-            name="Revenue"
-            fill={COLORS.navy}
-            radius={[4, 4, 0, 0]}
-          />
+          <Bar dataKey="revenue" name="Revenue" fill={COLORS.navy} radius={[4, 4, 0, 0]} />
           <Bar
             dataKey="margin"
             name="Margin %"
@@ -339,16 +319,10 @@ export const PortfolioAllocation: StoryObj = {
               stroke="none"
             >
               {allocationData.map((_, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={PIE_COLORS[index % PIE_COLORS.length]}
-                />
+                <Cell key={`cell-${index}`} fill={PIE_COLORS[index % PIE_COLORS.length]} />
               ))}
             </Pie>
-            <Tooltip
-              {...tooltipStyle}
-              formatter={(value: number) => [`${value}%`, undefined]}
-            />
+            <Tooltip {...tooltipStyle} formatter={(value: number) => [`${value}%`, undefined]} />
           </PieChart>
         </ResponsiveContainer>
         <CS.PieLegendColumn>
@@ -381,10 +355,7 @@ export const TradingVolume: StoryObj = {
             tickLine={false}
             tickFormatter={(v) => `$${v}M`}
           />
-          <Tooltip
-            {...tooltipStyle}
-            formatter={(value: number) => [`$${value}M`, undefined]}
-          />
+          <Tooltip {...tooltipStyle} formatter={(value: number) => [`$${value}M`, undefined]} />
           <Legend iconType="circle" wrapperStyle={{ fontSize: 12, paddingTop: 12 }} />
           <Bar
             dataKey="buy"
@@ -433,12 +404,14 @@ export const RiskAnalysis: StoryObj = {
             tickLine={false}
             tickFormatter={(v) => `${v}%`}
           />
-          <Tooltip
-            {...tooltipStyle}
-            formatter={(value: number) => [`${value}%`, undefined]}
-          />
+          <Tooltip {...tooltipStyle} formatter={(value: number) => [`${value}%`, undefined]} />
           <Legend iconType="circle" wrapperStyle={{ fontSize: 12, paddingTop: 12 }} />
-          <ReferenceLine y={-2} stroke={COLORS.amber} strokeDasharray="6 3" label={{ value: 'VaR Limit', fill: COLORS.amber, fontSize: 11 }} />
+          <ReferenceLine
+            y={-2}
+            stroke={COLORS.amber}
+            strokeDasharray="6 3"
+            label={{ value: 'VaR Limit', fill: COLORS.amber, fontSize: 11 }}
+          />
           <Area
             type="monotone"
             dataKey="cvar"
@@ -520,10 +493,7 @@ export const DashboardOverview: StoryObj = {
                     stroke="none"
                   >
                     {allocationData.map((_, index) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={PIE_COLORS[index % PIE_COLORS.length]}
-                      />
+                      <Cell key={`cell-${index}`} fill={PIE_COLORS[index % PIE_COLORS.length]} />
                     ))}
                   </Pie>
                   <Tooltip
@@ -564,19 +534,8 @@ export const DashboardOverview: StoryObj = {
                   {...tooltipStyle}
                   formatter={(value: number) => [`$${value}M`, undefined]}
                 />
-                <Bar
-                  dataKey="buy"
-                  name="Buy"
-                  stackId="vol"
-                  fill={COLORS.green}
-                />
-                <Bar
-                  dataKey="sell"
-                  name="Sell"
-                  stackId="vol"
-                  fill={COLORS.red}
-                  opacity={0.85}
-                />
+                <Bar dataKey="buy" name="Buy" stackId="vol" fill={COLORS.green} />
+                <Bar dataKey="sell" name="Sell" stackId="vol" fill={COLORS.red} opacity={0.85} />
                 <Bar
                   dataKey="transfers"
                   name="Transfer"
@@ -593,11 +552,7 @@ export const DashboardOverview: StoryObj = {
         <Col span={10}>
           <Card variant="borderless" title="Revenue by Product">
             <ResponsiveContainer width="100%" height={220}>
-              <BarChart
-                data={revenueByProduct}
-                layout="vertical"
-                barSize={14}
-              >
+              <BarChart data={revenueByProduct} layout="vertical" barSize={14}>
                 <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} horizontal={false} />
                 <XAxis
                   type="number"
@@ -618,11 +573,7 @@ export const DashboardOverview: StoryObj = {
                   {...tooltipStyle}
                   formatter={(value: number) => [`$${value}M`, undefined]}
                 />
-                <Bar
-                  dataKey="revenue"
-                  fill={COLORS.navy}
-                  radius={[0, 4, 4, 0]}
-                />
+                <Bar dataKey="revenue" fill={COLORS.navy} radius={[0, 4, 4, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </Card>

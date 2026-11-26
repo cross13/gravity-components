@@ -1,6 +1,14 @@
 import { useId, useMemo } from 'react'
 import { Segmented } from 'antd'
-import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts'
 import { Card } from '../../Card'
 import type {
   AdvisorTotalTimelineWidgetProps,

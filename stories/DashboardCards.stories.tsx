@@ -29,13 +29,7 @@ export default meta
 
 /* ─── Shared Helpers ──────────────────────────── */
 
-const SparklineBars = ({
-  color,
-  heights,
-}: {
-  color: string
-  heights: number[]
-}) => (
+const SparklineBars = ({ color, heights }: { color: string; heights: number[] }) => (
   <DS.SparklineBarsRow>
     {heights.map((h, i) => (
       <DS.SparklineBarSeg
@@ -83,10 +77,7 @@ export const StatCardsRow: StoryObj = {
           trendValue="+14.2% vs last quarter"
           accentColor="linear-gradient(90deg, #003973, #0077FF)"
           sparkline={
-            <SparklineBars
-              color="#003973"
-              heights={[40, 55, 45, 65, 55, 75, 60, 85, 72, 100]}
-            />
+            <SparklineBars color="#003973" heights={[40, 55, 45, 65, 55, 75, 60, 85, 72, 100]} />
           }
         />
       </Col>
@@ -98,10 +89,7 @@ export const StatCardsRow: StoryObj = {
           trendValue="+6.8% from last month"
           accentColor="linear-gradient(90deg, #00BBDD, #00D4FA)"
           sparkline={
-            <SparklineBars
-              color="#00BBDD"
-              heights={[50, 55, 65, 58, 72, 68, 80, 78, 92, 88]}
-            />
+            <SparklineBars color="#00BBDD" heights={[50, 55, 65, 58, 72, 68, 80, 78, 92, 88]} />
           }
         />
       </Col>
@@ -114,10 +102,7 @@ export const StatCardsRow: StoryObj = {
           trendValue="+22.5% vs last week"
           accentColor="linear-gradient(90deg, #00B67A, #34D399)"
           sparkline={
-            <SparklineBars
-              color="#00B67A"
-              heights={[30, 60, 40, 80, 50, 70, 65, 95, 85, 100]}
-            />
+            <SparklineBars color="#00B67A" heights={[30, 60, 40, 80, 50, 70, 65, 95, 85, 100]} />
           }
         />
       </Col>
@@ -130,10 +115,7 @@ export const StatCardsRow: StoryObj = {
           trendValue="-1.3% from last quarter"
           accentColor="linear-gradient(90deg, #F5A623, #FBBF24)"
           sparkline={
-            <SparklineBars
-              color="#F5A623"
-              heights={[90, 85, 80, 78, 70, 72, 65, 60, 55, 50]}
-            />
+            <SparklineBars color="#F5A623" heights={[90, 85, 80, 78, 70, 72, 65, 60, 55, 50]} />
           }
         />
       </Col>
@@ -258,9 +240,7 @@ const txnColumns = [
     title: 'Type',
     dataIndex: 'type',
     key: 'type',
-    render: (val: string, record: Transaction) => (
-      <AntTag color={record.typeColor}>{val}</AntTag>
-    ),
+    render: (val: string, record: Transaction) => <AntTag color={record.typeColor}>{val}</AntTag>,
   },
   {
     title: 'Amount',
@@ -273,9 +253,7 @@ const txnColumns = [
     title: 'Status',
     dataIndex: 'status',
     key: 'status',
-    render: (val: string, record: Transaction) => (
-      <AntTag color={record.statusColor}>{val}</AntTag>
-    ),
+    render: (val: string, record: Transaction) => <AntTag color={record.statusColor}>{val}</AntTag>,
   },
   {
     title: 'Date',
@@ -301,12 +279,7 @@ export const TransactionTable: StoryObj = {
       }
       styles={{ body: { padding: 0 } }}
     >
-      <Table
-        dataSource={transactions}
-        columns={txnColumns}
-        pagination={false}
-        size="middle"
-      />
+      <Table dataSource={transactions} columns={txnColumns} pagination={false} size="middle" />
     </Card>
   ),
 }
@@ -453,12 +426,7 @@ export const BentoGrid: StoryObj = {
           }
           styles={{ body: { padding: 0 } }}
         >
-          <Table
-            dataSource={transactions}
-            columns={txnColumns}
-            pagination={false}
-            size="middle"
-          />
+          <Table dataSource={transactions} columns={txnColumns} pagination={false} size="middle" />
         </Card>
       </Col>
       <Col span={8}>
@@ -478,9 +446,7 @@ export const BentoGrid: StoryObj = {
                 {item.icon}
               </DS.ActivityIconWrap>
               <DS.ActivityBodyClamp>
-                <DS.ActivityText ellipsis>
-                  {item.text}
-                </DS.ActivityText>
+                <DS.ActivityText ellipsis>{item.text}</DS.ActivityText>
                 <DS.ActivityTime>{item.time}</DS.ActivityTime>
               </DS.ActivityBodyClamp>
             </DS.ActivityRow>
@@ -539,26 +505,14 @@ export const FinancialAlerts: StoryObj = {
   render: () => (
     <DS.AlertsCard variant="borderless" title="Alerts">
       <DS.StackGap12>
-        <Alert
-          type="success"
-          title="Transaction settled successfully."
-          showIcon
-        />
-        <Alert
-          type="warning"
-          title="KYC documentation expires in 7 days. Renew now."
-          showIcon
-        />
+        <Alert type="success" title="Transaction settled successfully." showIcon />
+        <Alert type="warning" title="KYC documentation expires in 7 days. Renew now." showIcon />
         <Alert
           type="error"
           title="Transfer failed. Insufficient funds in source account."
           showIcon
         />
-        <Alert
-          type="info"
-          title="Market closes at 17:00 ART. 2 hours remaining."
-          showIcon
-        />
+        <Alert type="info" title="Market closes at 17:00 ART. 2 hours remaining." showIcon />
       </DS.StackGap12>
     </DS.AlertsCard>
   ),
@@ -596,10 +550,7 @@ export const FullDashboard: StoryObj = {
             trendValue="+14.2% vs last quarter"
             accentColor="linear-gradient(90deg, #003973, #0077FF)"
             sparkline={
-              <SparklineBars
-                color="#003973"
-                heights={[40, 55, 45, 65, 55, 75, 60, 85, 72, 100]}
-              />
+              <SparklineBars color="#003973" heights={[40, 55, 45, 65, 55, 75, 60, 85, 72, 100]} />
             }
           />
         </Col>
@@ -611,10 +562,7 @@ export const FullDashboard: StoryObj = {
             trendValue="+6.8% from last month"
             accentColor="linear-gradient(90deg, #00BBDD, #00D4FA)"
             sparkline={
-              <SparklineBars
-                color="#00BBDD"
-                heights={[50, 55, 65, 58, 72, 68, 80, 78, 92, 88]}
-              />
+              <SparklineBars color="#00BBDD" heights={[50, 55, 65, 58, 72, 68, 80, 78, 92, 88]} />
             }
           />
         </Col>
@@ -627,10 +575,7 @@ export const FullDashboard: StoryObj = {
             trendValue="+22.5% vs last week"
             accentColor="linear-gradient(90deg, #00B67A, #34D399)"
             sparkline={
-              <SparklineBars
-                color="#00B67A"
-                heights={[30, 60, 40, 80, 50, 70, 65, 95, 85, 100]}
-              />
+              <SparklineBars color="#00B67A" heights={[30, 60, 40, 80, 50, 70, 65, 95, 85, 100]} />
             }
           />
         </Col>
@@ -643,10 +588,7 @@ export const FullDashboard: StoryObj = {
             trendValue="-1.3% from last quarter"
             accentColor="linear-gradient(90deg, #F5A623, #FBBF24)"
             sparkline={
-              <SparklineBars
-                color="#F5A623"
-                heights={[90, 85, 80, 78, 70, 72, 65, 60, 55, 50]}
-              />
+              <SparklineBars color="#F5A623" heights={[90, 85, 80, 78, 70, 72, 65, 60, 55, 50]} />
             }
           />
         </Col>
@@ -741,11 +683,7 @@ export const FullDashboard: StoryObj = {
         <Col span={12}>
           <Card variant="borderless" title="Alerts">
             <DS.StackGap12>
-              <Alert
-                type="success"
-                title="Transaction settled successfully."
-                showIcon
-              />
+              <Alert type="success" title="Transaction settled successfully." showIcon />
               <Alert
                 type="warning"
                 title="KYC documentation expires in 7 days. Renew now."
@@ -756,11 +694,7 @@ export const FullDashboard: StoryObj = {
                 title="Transfer failed. Insufficient funds in source account."
                 showIcon
               />
-              <Alert
-                type="info"
-                title="Market closes at 17:00 ART. 2 hours remaining."
-                showIcon
-              />
+              <Alert type="info" title="Market closes at 17:00 ART. 2 hours remaining." showIcon />
             </DS.StackGap12>
           </Card>
         </Col>

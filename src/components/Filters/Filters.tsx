@@ -253,9 +253,7 @@ function TypeaheadEditor({
 }) {
   const { onSearch, options: staticOptions = [], minChars = 0, debounceMs = 250 } = field
   const [query, setQuery] = useState('')
-  const [results, setResults] = useState<FilterFieldOption[]>(
-    onSearch ? [] : staticOptions,
-  )
+  const [results, setResults] = useState<FilterFieldOption[]>(onSearch ? [] : staticOptions)
   const [loading, setLoading] = useState(false)
   /** Bumps on every search dispatch so stale async responses can be ignored. */
   const requestRef = useRef(0)
@@ -603,12 +601,9 @@ export function Filters({
     [values, setValues],
   )
 
-  const cancelPending = useCallback(
-    (key: string) => {
-      setPendingKey((k) => (k === key ? null : k))
-    },
-    [],
-  )
+  const cancelPending = useCallback((key: string) => {
+    setPendingKey((k) => (k === key ? null : k))
+  }, [])
 
   const clearAll = useCallback(() => {
     setValues({})
@@ -621,10 +616,7 @@ export function Filters({
   )
 
   const inactiveFields = useMemo(
-    () =>
-      fields.filter(
-        (f) => isEmptyValue(values[f.key]) && f.key !== pendingKey,
-      ),
+    () => fields.filter((f) => isEmptyValue(values[f.key]) && f.key !== pendingKey),
     [fields, values, pendingKey],
   )
 
