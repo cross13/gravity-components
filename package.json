@@ -41,7 +41,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "lint": "eslint src/",
+    "lint": "vp lint",
     "format": "prettier --write .",
     "test": "vp test run",
     "test:watch": "vp test",
@@ -112,9 +112,6 @@
     "@vitest/coverage-v8": "5.1.1",
     "antd": "^6.7.2",
     "dayjs": "^1.11.23",
-    "eslint": "^9.39.5",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^7.1.1",
     "jsdom": "^31.0.1",
     "lucide-react": "^1.81.0",
     "prettier": "^3.10.1",
@@ -128,7 +125,6 @@
     "styled-components": "^6.7.0",
     "tsup": "^8.5.1",
     "typescript": "~5.8",
-    "typescript-eslint": "^8.74.0",
     "vite": "npm:@voidzero-dev/vite-plus-core@8.3.8001",
     "vite-plus": "1.8.0"
   },
