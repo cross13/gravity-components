@@ -9,6 +9,26 @@ import { lint } from './lint.config'
 export default defineConfig({
   plugins: lazyPlugins(() => [react()]),
   lint,
+  fmt: {
+    semi: false,
+    singleQuote: true,
+    trailingComma: 'all',
+    printWidth: 100,
+    tabWidth: 2,
+    arrowParens: 'always',
+    sortPackageJson: false,
+    // Only code is formatted: docs, generated files and static assets are left alone.
+    ignorePatterns: [
+      'dist',
+      'storybook-static',
+      'coverage',
+      '.planning',
+      '.changeset',
+      '**/*.md',
+      '**/*.html',
+      'package-lock.json',
+    ],
+  },
   test: {
     passWithNoTests: true,
     environment: 'jsdom',
