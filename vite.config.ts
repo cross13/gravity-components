@@ -6,4 +6,14 @@ import { defineConfig, lazyPlugins } from 'vite-plus'
 // https://viteplus.dev/config/
 export default defineConfig({
   plugins: lazyPlugins(() => [react()]),
+  test: {
+    passWithNoTests: true,
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: ['./src/test-setup.ts'],
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'lcov'],
+    },
+  },
 })
