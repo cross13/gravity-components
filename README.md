@@ -147,10 +147,14 @@ Exported names match `src/index.ts`. Types are exported next to each component w
 ```bash
 npm run storybook      # Storybook dev server (port 6006)
 npm run build          # Library build: ESM + CJS + declarations (tsup)
-npm test               # Vitest
-npm run lint           # ESLint (`src/`)
+npm test               # Vitest, run through Vite+ (`vp test`)
+npm run lint           # Oxlint (`vp lint`)
+npm run format         # Oxfmt, rewrites files (`vp fmt`)
+npm run verify         # Format check + lint in one pass (`vp check`)
 npm run build-storybook # Static Storybook into `storybook-static/`
 ```
+
+Tooling is [Vite+](https://viteplus.dev) (`vite-plus`): one dependency that provides Vitest, Oxlint and Oxfmt, configured in `vite.config.ts` and `lint.config.ts`. Tests import from `vite-plus/test`. The library build stays on `tsup`.
 
 Releases to npm are automated with Changesets and GitHub Actions; see [docs/publishing.md](docs/publishing.md) for the `NPM_TOKEN` secret and the version / publish flow.
 
