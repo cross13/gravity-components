@@ -18,7 +18,9 @@ interface Order {
 const allOrders: Order[] = Array.from({ length: 47 }, (_, i) => ({
   key: String(i + 1),
   orderId: `ORD-2024-${String(i + 1001).padStart(4, '0')}`,
-  customer: ['Acme Corp', 'Globex Inc', 'Wayne Enterprises', 'Stark Industries', 'Umbrella Corp'][i % 5],
+  customer: ['Acme Corp', 'Globex Inc', 'Wayne Enterprises', 'Stark Industries', 'Umbrella Corp'][
+    i % 5
+  ],
   amount: Math.round(Math.random() * 50000 + 500),
   status: (['completed', 'processing', 'pending', 'cancelled'] as const)[i % 4],
   date: `2024-0${(i % 9) + 1}-${String((i % 28) + 1).padStart(2, '0')}`,
@@ -45,7 +47,9 @@ const columns = [
         pending: 'warning',
         cancelled: 'error',
       }
-      return <AntTag color={colorMap[status]}>{status.charAt(0).toUpperCase() + status.slice(1)}</AntTag>
+      return (
+        <AntTag color={colorMap[status]}>{status.charAt(0).toUpperCase() + status.slice(1)}</AntTag>
+      )
     },
   },
   { title: 'Date', dataIndex: 'date', key: 'date' },
@@ -112,7 +116,11 @@ export const ServerSide: Story = {
         columns={columns}
         onFetch={handleFetch}
         searchPlaceholder="Search by order ID or customer..."
-        toolbar={<Button type="primary" icon={<PlusOutlined />}>New Order</Button>}
+        toolbar={
+          <Button type="primary" icon={<PlusOutlined />}>
+            New Order
+          </Button>
+        }
       />
     )
   },
@@ -134,9 +142,7 @@ export const EmptyState: Story = {
 }
 
 export const Loading: Story = {
-  render: (args) => (
-    <DataGrid<Order> {...args} columns={columns} dataSource={[]} />
-  ),
+  render: (args) => <DataGrid<Order> {...args} columns={columns} dataSource={[]} />,
   args: {
     loading: true,
     searchable: false,

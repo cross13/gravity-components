@@ -112,10 +112,7 @@ export const WithValidation: Story = {
       <Form.Item
         label="Password"
         name="password"
-        rules={[
-          { required: true },
-          { min: 8, message: 'Minimum 8 characters' },
-        ]}
+        rules={[{ required: true }, { min: 8, message: 'Minimum 8 characters' }]}
       >
         <AntInput.Password placeholder="Strong password" />
       </Form.Item>

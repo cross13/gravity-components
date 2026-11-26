@@ -15,25 +15,86 @@ interface Employee {
 }
 
 const employees: Employee[] = [
-  { key: '1', name: 'Sarah Connor', email: 'sarah@acme.io', department: 'Engineering', role: 'Staff Engineer', status: 'active', salary: 185000 },
-  { key: '2', name: 'John Martinez', email: 'john@acme.io', department: 'Design', role: 'Senior Designer', status: 'active', salary: 142000 },
-  { key: '3', name: 'Emily Zhang', email: 'emily@acme.io', department: 'Marketing', role: 'Marketing Lead', status: 'active', salary: 128000 },
-  { key: '4', name: 'Michael Brown', email: 'michael@acme.io', department: 'Engineering', role: 'Junior Developer', status: 'pending', salary: 92000 },
-  { key: '5', name: 'Lisa Anderson', email: 'lisa@acme.io', department: 'Sales', role: 'Account Executive', status: 'inactive', salary: 115000 },
+  {
+    key: '1',
+    name: 'Sarah Connor',
+    email: 'sarah@acme.io',
+    department: 'Engineering',
+    role: 'Staff Engineer',
+    status: 'active',
+    salary: 185000,
+  },
+  {
+    key: '2',
+    name: 'John Martinez',
+    email: 'john@acme.io',
+    department: 'Design',
+    role: 'Senior Designer',
+    status: 'active',
+    salary: 142000,
+  },
+  {
+    key: '3',
+    name: 'Emily Zhang',
+    email: 'emily@acme.io',
+    department: 'Marketing',
+    role: 'Marketing Lead',
+    status: 'active',
+    salary: 128000,
+  },
+  {
+    key: '4',
+    name: 'Michael Brown',
+    email: 'michael@acme.io',
+    department: 'Engineering',
+    role: 'Junior Developer',
+    status: 'pending',
+    salary: 92000,
+  },
+  {
+    key: '5',
+    name: 'Lisa Anderson',
+    email: 'lisa@acme.io',
+    department: 'Sales',
+    role: 'Account Executive',
+    status: 'inactive',
+    salary: 115000,
+  },
 ]
 
 const columns = [
-  { title: 'Name', dataIndex: 'name', key: 'name', sorter: (a: Employee, b: Employee) => a.name.localeCompare(b.name) },
+  {
+    title: 'Name',
+    dataIndex: 'name',
+    key: 'name',
+    sorter: (a: Employee, b: Employee) => a.name.localeCompare(b.name),
+  },
   { title: 'Email', dataIndex: 'email', key: 'email' },
-  { title: 'Department', dataIndex: 'department', key: 'department', filters: [{ text: 'Engineering', value: 'Engineering' }, { text: 'Design', value: 'Design' }, { text: 'Marketing', value: 'Marketing' }], onFilter: (value: unknown, record: Employee) => record.department === value },
+  {
+    title: 'Department',
+    dataIndex: 'department',
+    key: 'department',
+    filters: [
+      { text: 'Engineering', value: 'Engineering' },
+      { text: 'Design', value: 'Design' },
+      { text: 'Marketing', value: 'Marketing' },
+    ],
+    onFilter: (value: unknown, record: Employee) => record.department === value,
+  },
   { title: 'Role', dataIndex: 'role', key: 'role' },
   {
     title: 'Status',
     dataIndex: 'status',
     key: 'status',
     render: (status: string) => {
-      const colorMap: Record<string, string> = { active: 'success', inactive: 'default', pending: 'warning' }
-      return <AntTag color={colorMap[status]}>{status.charAt(0).toUpperCase() + status.slice(1)}</AntTag>
+      const colorMap: Record<string, string> = {
+        active: 'success',
+        inactive: 'default',
+        pending: 'warning',
+      }
+      return (
+        <AntTag color={colorMap[status]}>{status.charAt(0).toUpperCase() + status.slice(1)}</AntTag>
+      )
     },
   },
   {
@@ -49,8 +110,12 @@ const columns = [
     key: 'actions',
     render: () => (
       <Space>
-        <Button type="link" size="small">Edit</Button>
-        <Button type="link" size="small" danger>Remove</Button>
+        <Button type="link" size="small">
+          Edit
+        </Button>
+        <Button type="link" size="small" danger>
+          Remove
+        </Button>
       </Space>
     ),
   },
@@ -108,11 +173,7 @@ export const Default: Story = {
 export const WithSelection: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
-    <Table
-      dataSource={employees}
-      columns={columns}
-      rowSelection={{ type: 'checkbox' }}
-    />
+    <Table dataSource={employees} columns={columns} rowSelection={{ type: 'checkbox' }} />
   ),
 }
 
@@ -120,12 +181,7 @@ export const Loading: Story = {
   render: (args) => {
     const { pagination, ...rest } = args
     return (
-      <Table
-        {...rest}
-        pagination={tablePagination(pagination)}
-        dataSource={[]}
-        columns={columns}
-      />
+      <Table {...rest} pagination={tablePagination(pagination)} dataSource={[]} columns={columns} />
     )
   },
   args: {
@@ -140,12 +196,7 @@ export const EmptyState: Story = {
   render: (args) => {
     const { pagination, ...rest } = args
     return (
-      <Table
-        {...rest}
-        pagination={tablePagination(pagination)}
-        dataSource={[]}
-        columns={columns}
-      />
+      <Table {...rest} pagination={tablePagination(pagination)} dataSource={[]} columns={columns} />
     )
   },
   args: {

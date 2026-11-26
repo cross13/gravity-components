@@ -9,9 +9,7 @@ export interface GravityToasterProps extends Omit<ToasterProps, 'theme'> {
   theme?: 'light' | 'dark' | 'system'
 }
 
-function sonnerVarsFromToken(
-  token: ReturnType<typeof theme.useToken>['token'],
-): CSSProperties {
+function sonnerVarsFromToken(token: ReturnType<typeof theme.useToken>['token']): CSSProperties {
   return {
     '--width': '380px',
     '--border-radius': `${token.borderRadiusLG}px`,
@@ -38,44 +36,40 @@ function sonnerVarsFromToken(
  * Sonner {@link Toaster} styled with the active Ant Design / Gravity design tokens.
  * Must render under {@link GravityProvider} (inside `ConfigProvider`) so `theme.useToken()` resolves.
  */
-export const GravityToaster = forwardRef<HTMLElement, GravityToasterProps>(
-  function GravityToaster(
-    {
-      theme: sonnerTheme = 'light',
-      position = 'top-right',
-      richColors = true,
-      className,
-      toastOptions,
-      style,
-      ...rest
-    },
-    ref,
-  ) {
-    const { token } = theme.useToken()
-    const scopeClass = `gravity-sonner-${useId().replace(/:/g, '')}`
+export const GravityToaster = forwardRef<HTMLElement, GravityToasterProps>(function GravityToaster(
+  {
+    theme: sonnerTheme = 'light',
+    position = 'top-right',
+    richColors = true,
+    className,
+    toastOptions,
+    style,
+    ...rest
+  },
+  ref,
+) {
+  const { token } = theme.useToken()
+  const scopeClass = `gravity-sonner-${useId().replace(/:/g, '')}`
 
-    const cssVars = useMemo(() => sonnerVarsFromToken(token), [token])
+  const cssVars = useMemo(() => sonnerVarsFromToken(token), [token])
 
-    const mergedStyle = useMemo(
-      () => ({ ...cssVars, ...style }),
-      [cssVars, style],
-    )
+  const mergedStyle = useMemo(() => ({ ...cssVars, ...style }), [cssVars, style])
 
-    const mergedToastOptions = useMemo(
-      () => ({
-        ...toastOptions,
-        style: {
-          fontSize: token.fontSize,
-          ...toastOptions?.style,
-        },
-      }),
-      [token.fontSize, toastOptions],
-    )
+  const mergedToastOptions = useMemo(
+    () => ({
+      ...toastOptions,
+      style: {
+        fontSize: token.fontSize,
+        ...toastOptions?.style,
+      },
+    }),
+    [token.fontSize, toastOptions],
+  )
 
-    const mergedClassName = [scopeClass, className].filter(Boolean).join(' ')
+  const mergedClassName = [scopeClass, className].filter(Boolean).join(' ')
 
-    const extraCss = useMemo(
-      () => `
+  const extraCss = useMemo(
+    () => `
 .${scopeClass} [data-sonner-toast][data-styled="true"] [data-description] {
   color: ${token.colorTextSecondary} !important;
 }
@@ -88,32 +82,31 @@ export const GravityToaster = forwardRef<HTMLElement, GravityToasterProps>(
   color: ${token.colorText} !important;
 }
 `,
-      [
-        scopeClass,
-        token.colorFillSecondary,
-        token.colorPrimary,
-        token.colorText,
-        token.colorTextLightSolid,
-        token.colorTextSecondary,
-      ],
-    )
+    [
+      scopeClass,
+      token.colorFillSecondary,
+      token.colorPrimary,
+      token.colorText,
+      token.colorTextLightSolid,
+      token.colorTextSecondary,
+    ],
+  )
 
-    return (
-      <>
-        <style dangerouslySetInnerHTML={{ __html: extraCss }} />
-        <Toaster
-          ref={ref}
-          theme={sonnerTheme}
-          position={position}
-          richColors={richColors}
-          className={mergedClassName}
-          toastOptions={mergedToastOptions}
-          style={mergedStyle}
-          {...rest}
-        />
-      </>
-    )
-  },
-)
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: extraCss }} />
+      <Toaster
+        ref={ref}
+        theme={sonnerTheme}
+        position={position}
+        richColors={richColors}
+        className={mergedClassName}
+        toastOptions={mergedToastOptions}
+        style={mergedStyle}
+        {...rest}
+      />
+    </>
+  )
+})
 
 GravityToaster.displayName = 'GravityToaster'

@@ -81,11 +81,7 @@ const COLORS = {
 
 /* ─── Helpers ────────────────────────────────── */
 
-function IconGrid({
-  icons,
-}: {
-  icons: { icon: LucideIcon; name: string }[]
-}) {
+function IconGrid({ icons }: { icons: { icon: LucideIcon; name: string }[] }) {
   return (
     <IS.IconGridRoot>
       {icons.map(({ icon: Icon, name }) => (
@@ -214,18 +210,14 @@ export const StrokeWidths: StoryObj = {
     return (
       <Card variant="borderless" title="Stroke Width Control">
         <IS.StrokeIntro>
-          Lucide icons support adjustable <Text code>strokeWidth</Text> for
-          visual hierarchy without loading separate icon sets.
+          Lucide icons support adjustable <Text code>strokeWidth</Text> for visual hierarchy without
+          loading separate icon sets.
         </IS.StrokeIntro>
         <IS.StrokeRow>
           {weights.map(({ width, label }) => (
             <IS.StrokeCol key={width}>
               <IS.StrokeSwatch>
-                <Activity
-                  size={28}
-                  strokeWidth={width}
-                  color={COLORS.navy}
-                />
+                <Activity size={28} strokeWidth={width} color={COLORS.navy} />
               </IS.StrokeSwatch>
               <IS.StrokeLabel>{label}</IS.StrokeLabel>
             </IS.StrokeCol>
@@ -295,15 +287,9 @@ export const WithComponents: StoryObj = {
           <Button type="primary" icon={<Plus size={16} strokeWidth={2} />}>
             New Transaction
           </Button>
-          <Button icon={<Download size={16} strokeWidth={1.8} />}>
-            Export Report
-          </Button>
-          <Button icon={<Filter size={16} strokeWidth={1.8} />}>
-            Filter
-          </Button>
-          <Button icon={<RefreshCw size={16} strokeWidth={1.8} />}>
-            Refresh
-          </Button>
+          <Button icon={<Download size={16} strokeWidth={1.8} />}>Export Report</Button>
+          <Button icon={<Filter size={16} strokeWidth={1.8} />}>Filter</Button>
+          <Button icon={<RefreshCw size={16} strokeWidth={1.8} />}>Refresh</Button>
           <Button type="primary" danger icon={<Trash2 size={16} strokeWidth={1.8} />}>
             Delete
           </Button>
@@ -405,16 +391,10 @@ export const WithComponents: StoryObj = {
               <item.icon
                 size={18}
                 strokeWidth={1.8}
-                color={
-                  item.active
-                    ? '#FFFFFF'
-                    : 'rgba(255,255,255,0.45)'
-                }
+                color={item.active ? '#FFFFFF' : 'rgba(255,255,255,0.45)'}
               />
               <IS.NavItemLabel $active={item.active}>{item.label}</IS.NavItemLabel>
-              {item.badge && (
-                <IS.NavItemBadge>{item.badge}</IS.NavItemBadge>
-              )}
+              {item.badge && <IS.NavItemBadge>{item.badge}</IS.NavItemBadge>}
             </IS.NavItem>
           ))}
         </IS.SidebarDemo>

@@ -28,11 +28,7 @@ export const ProfilePill = styled.span<{ $tone: 'conservative' | 'moderate' | 'a
         ? 'rgba(245, 166, 35, 0.12)'
         : 'rgba(230, 38, 38, 0.10)'};
   color: ${({ $tone }) =>
-    $tone === 'conservative'
-      ? '#0058B8'
-      : $tone === 'moderate'
-        ? '#A56600'
-        : '#A11717'};
+    $tone === 'conservative' ? '#0058B8' : $tone === 'moderate' ? '#A56600' : '#A11717'};
 `
 
 export const StatGrid = styled.div`

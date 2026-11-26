@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import {
-  TopClientsWidget,
-  type TopClientRow,
-} from '../src/components/widgets/TopClientsWidget'
+import { TopClientsWidget, type TopClientRow } from '../src/components/widgets/TopClientsWidget'
 
 const meta: Meta<typeof TopClientsWidget> = {
   title: 'Widgets/Dashboard',

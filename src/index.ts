@@ -84,11 +84,7 @@ export type {
 } from './components/UserMenu'
 
 export { GravityToaster, toast, useSonner } from './components/Toaster'
-export type {
-  ExternalToast,
-  GravityToasterProps,
-  ToasterProps,
-} from './components/Toaster'
+export type { ExternalToast, GravityToasterProps, ToasterProps } from './components/Toaster'
 
 export { Alert } from './components/Alert'
 export type { AlertProps } from './components/Alert'

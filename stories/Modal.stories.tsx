@@ -30,12 +30,7 @@ function ModalWithTrigger(props: React.ComponentProps<typeof Modal>) {
       <Button type="primary" onClick={() => setOpen(true)}>
         Open modal
       </Button>
-      <Modal
-        {...props}
-        open={open}
-        onOk={() => setOpen(false)}
-        onCancel={() => setOpen(false)}
-      >
+      <Modal {...props} open={open} onOk={() => setOpen(false)} onCancel={() => setOpen(false)}>
         <ModalBodyStack direction="vertical" size="middle">
           <div>
             <Typography.Text strong>Full Name</Typography.Text>

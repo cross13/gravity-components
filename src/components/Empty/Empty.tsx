@@ -10,11 +10,7 @@ export function Empty({
   ...props
 }: EmptyProps) {
   return (
-    <AntEmpty
-      image={image ?? AntEmpty.PRESENTED_IMAGE_SIMPLE}
-      description={description}
-      {...props}
-    >
+    <AntEmpty image={image ?? AntEmpty.PRESENTED_IMAGE_SIMPLE} description={description} {...props}>
       {action ??
         (actionText && onAction ? (
           <Button type="primary" onClick={onAction}>

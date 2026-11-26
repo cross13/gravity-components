@@ -139,7 +139,8 @@ function holdingsColumns(currency: Currency) {
       key: 'pnl',
       align: 'right' as const,
       render: (_: unknown, row: HoldingRow) => {
-        const tone = row.unrealizedPnlArs > 0 ? 'positive' : row.unrealizedPnlArs < 0 ? 'negative' : 'neutral'
+        const tone =
+          row.unrealizedPnlArs > 0 ? 'positive' : row.unrealizedPnlArs < 0 ? 'negative' : 'neutral'
         return (
           <Space size={4} direction="vertical" style={{ alignItems: 'flex-end' }}>
             <Amount $tone={tone}>{formatCurrency(row.unrealizedPnlArs, currency)}</Amount>
@@ -294,7 +295,8 @@ function resultsColumns(currency: Currency) {
       key: 'realized',
       align: 'right' as const,
       render: (_: unknown, row: ResultRow) => {
-        const tone = row.realizedPnlArs > 0 ? 'positive' : row.realizedPnlArs < 0 ? 'negative' : 'neutral'
+        const tone =
+          row.realizedPnlArs > 0 ? 'positive' : row.realizedPnlArs < 0 ? 'negative' : 'neutral'
         return (
           <Space size={4} direction="vertical" style={{ alignItems: 'flex-end' }}>
             <Amount $tone={tone}>{formatCurrency(row.realizedPnlArs, currency)}</Amount>
@@ -321,7 +323,9 @@ function ResumenPanel({ currency }: { currency: Currency }) {
       <TabHeader>
         <div>
           <TabHeaderTitle>Resumen de posiciones</TabHeaderTitle>
-          <TabHeaderHint>Top 5 posiciones por peso. Cambia a la solapa Posiciones para ver el detalle completo.</TabHeaderHint>
+          <TabHeaderHint>
+            Top 5 posiciones por peso. Cambia a la solapa Posiciones para ver el detalle completo.
+          </TabHeaderHint>
         </div>
         <Button icon={<DownloadOutlined />}>Descargar resumen</Button>
       </TabHeader>
@@ -397,7 +401,9 @@ function ResultadosPanel({ currency }: { currency: Currency }) {
       <TabHeader>
         <div>
           <TabHeaderTitle>Resultados realizados</TabHeaderTitle>
-          <TabHeaderHint>Posiciones cerradas en el período con resultado e impuesto estimado.</TabHeaderHint>
+          <TabHeaderHint>
+            Posiciones cerradas en el período con resultado e impuesto estimado.
+          </TabHeaderHint>
         </div>
         <Button icon={<DownloadOutlined />}>Exportar</Button>
       </TabHeader>
@@ -419,7 +425,9 @@ function PosicionesPanel({ currency }: { currency: Currency }) {
       <TabHeader>
         <div>
           <TabHeaderTitle>Posiciones abiertas</TabHeaderTitle>
-          <TabHeaderHint>Tenencias actuales con valor de mercado y resultado no realizado.</TabHeaderHint>
+          <TabHeaderHint>
+            Tenencias actuales con valor de mercado y resultado no realizado.
+          </TabHeaderHint>
         </div>
         <Button icon={<DownloadOutlined />}>Exportar</Button>
       </TabHeader>
@@ -440,15 +448,22 @@ function WalletDetailPage() {
   const [currency, setCurrency] = useState<Currency>('ARS')
 
   const timelineData = useMemo(
-    () =>
-      walletTimelineArs.map((p) => ({ ...p, total: convertArsTo(p.total, currency) })),
+    () => walletTimelineArs.map((p) => ({ ...p, total: convertArsTo(p.total, currency) })),
     [currency],
   )
 
   const tabItems: TabsProps['items'] = [
     { key: 'resumen', label: 'Resumen', children: <ResumenPanel currency={currency} /> },
-    { key: 'movimientos', label: 'Movimientos', children: <MovimientosPanel currency={currency} /> },
-    { key: 'transacciones', label: 'Transacciones', children: <TransaccionesPanel currency={currency} /> },
+    {
+      key: 'movimientos',
+      label: 'Movimientos',
+      children: <MovimientosPanel currency={currency} />,
+    },
+    {
+      key: 'transacciones',
+      label: 'Transacciones',
+      children: <TransaccionesPanel currency={currency} />,
+    },
     { key: 'resultados', label: 'Resultados', children: <ResultadosPanel currency={currency} /> },
     { key: 'posiciones', label: 'Posiciones', children: <PosicionesPanel currency={currency} /> },
   ]

@@ -123,8 +123,7 @@ const fields: FilterField[] = [
 function ControlledFilters() {
   const [value, setValue] = useState<FilterValues>({})
   const total = 1842
-  const matched =
-    Math.max(0, Math.round(total / Math.max(1, Object.keys(value).length + 1)))
+  const matched = Math.max(0, Math.round(total / Math.max(1, Object.keys(value).length + 1)))
   const hasFilters = Object.keys(value).length > 0
   return (
     <div style={{ width: '100%', maxWidth: 1100 }}>
@@ -132,7 +131,9 @@ function ControlledFilters() {
         fields={fields}
         value={value}
         onChange={setValue}
-        resultSummary={hasFilters ? `${matched.toLocaleString()} of ${total.toLocaleString()} results` : null}
+        resultSummary={
+          hasFilters ? `${matched.toLocaleString()} of ${total.toLocaleString()} results` : null
+        }
       />
       <pre
         style={{

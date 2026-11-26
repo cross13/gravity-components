@@ -54,9 +54,7 @@ export const Default: Story = {
       <PageHeader
         {...rest}
         breadcrumb={
-          showBreadcrumb
-            ? [{ title: 'Home' }, { title: 'HR' }, { title: 'Employees' }]
-            : undefined
+          showBreadcrumb ? [{ title: 'Home' }, { title: 'HR' }, { title: 'Employees' }] : undefined
         }
         actions={defaultActions}
       />
@@ -74,9 +72,7 @@ export const Simple: Story = {
     return (
       <PageHeader
         {...rest}
-        breadcrumb={
-          showBreadcrumb ? [{ title: 'Home' }, { title: 'Settings' }] : undefined
-        }
+        breadcrumb={showBreadcrumb ? [{ title: 'Home' }, { title: 'Settings' }] : undefined}
       />
     )
   },
@@ -104,7 +100,12 @@ export const WithBackButton: Story = {
     <PageHeader
       title="John Appleseed"
       subtitle="Senior Software Engineer · Engineering"
-      breadcrumb={[{ title: 'Home' }, { title: 'HR' }, { title: 'Employees' }, { title: 'John Appleseed' }]}
+      breadcrumb={[
+        { title: 'Home' },
+        { title: 'HR' },
+        { title: 'Employees' },
+        { title: 'John Appleseed' },
+      ]}
       onBack={() => alert('Back clicked')}
       actions={
         <>
@@ -134,7 +135,12 @@ export const WithAll: Story = {
     <PageHeader
       title="John Appleseed"
       subtitle="Senior Software Engineer · Engineering"
-      breadcrumb={[{ title: 'Home' }, { title: 'HR' }, { title: 'Employees' }, { title: 'John Appleseed' }]}
+      breadcrumb={[
+        { title: 'Home' },
+        { title: 'HR' },
+        { title: 'Employees' },
+        { title: 'John Appleseed' },
+      ]}
       onBack={() => alert('Back clicked')}
       actions={
         <>

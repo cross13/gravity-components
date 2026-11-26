@@ -47,7 +47,11 @@ export const States: Story = {
         <Typography.Text type="secondary">Disabled</Typography.Text>
       </Space>
       <Space size="middle" align="center">
-        <Switch checkedChildren={<CheckOutlined />} unCheckedChildren={<CloseOutlined />} defaultChecked />
+        <Switch
+          checkedChildren={<CheckOutlined />}
+          unCheckedChildren={<CloseOutlined />}
+          defaultChecked
+        />
         <Typography.Text type="secondary">With icons</Typography.Text>
       </Space>
       <Space size="middle" align="center">

@@ -18,9 +18,7 @@ const planOptions = [
 ]
 
 export const Default: Story = {
-  render: () => (
-    <Radio.Group defaultValue="growth" options={planOptions} />
-  ),
+  render: () => <Radio.Group defaultValue="growth" options={planOptions} />,
 }
 
 export const Standalone: Story = {

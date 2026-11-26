@@ -23,19 +23,8 @@ import { DataGrid } from '../../src/components/DataGrid'
 import type { DataGridFetchParams } from '../../src/components/DataGrid'
 import { Filters } from '../../src/components/Filters'
 import type { FilterField, FilterValues } from '../../src/components/Filters'
-import {
-  mockClients,
-  mockTransactions,
-  paginate,
-  formatArs,
-} from './listViewMocks'
-import type {
-  ClientRow,
-  ClientStatus,
-  TransactionRow,
-  TxStatus,
-  TxType,
-} from './listViewMocks'
+import { mockClients, mockTransactions, paginate, formatArs } from './listViewMocks'
+import type { ClientRow, ClientStatus, TransactionRow, TxStatus, TxType } from './listViewMocks'
 import {
   PageBackground,
   SurfaceWrap,
@@ -204,13 +193,15 @@ const transactionColumns = [
   },
 ]
 
-const advisorOptions = Array.from(
-  new Set(mockClients.map((c) => c.advisor)),
-).map((name) => ({ label: name, value: name }))
+const advisorOptions = Array.from(new Set(mockClients.map((c) => c.advisor))).map((name) => ({
+  label: name,
+  value: name,
+}))
 
-const walletOptions = Array.from(
-  new Set(mockClients.map((c) => c.walletLabel)),
-).map((label) => ({ label, value: label }))
+const walletOptions = Array.from(new Set(mockClients.map((c) => c.walletLabel))).map((label) => ({
+  label,
+  value: label,
+}))
 
 const clientFilterFields: FilterField[] = [
   {
@@ -300,9 +291,7 @@ function applyClientFilters(rows: ClientRow[], filters: FilterValues): ClientRow
   const name = (filters.name as string | undefined)?.trim().toLowerCase()
   if (name) {
     out = out.filter(
-      (r) =>
-        r.firstName.toLowerCase().includes(name) ||
-        r.lastName.toLowerCase().includes(name),
+      (r) => r.firstName.toLowerCase().includes(name) || r.lastName.toLowerCase().includes(name),
     )
   }
   return out
@@ -344,10 +333,7 @@ const headerActions = (newLabel: string) => (
 function ClientsListPage() {
   const [filters, setFilters] = useState<FilterValues>({})
 
-  const filteredAll = useMemo(
-    () => applyClientFilters(mockClients, filters),
-    [filters],
-  )
+  const filteredAll = useMemo(() => applyClientFilters(mockClients, filters), [filters])
 
   const handleFetch = useCallback(
     async ({ page, pageSize, search }: DataGridFetchParams) => {
@@ -377,11 +363,7 @@ function ClientsListPage() {
         <PageHeader
           title="Clientes"
           subtitle="Listado completo de clientes asignados a la plataforma."
-          breadcrumb={[
-            { title: 'Inicio' },
-            { title: 'Comercial' },
-            { title: 'Clientes' },
-          ]}
+          breadcrumb={[{ title: 'Inicio' }, { title: 'Comercial' }, { title: 'Clientes' }]}
           actions={headerActions('Nuevo cliente')}
         />
         <FiltersBar>
@@ -397,9 +379,7 @@ function ClientsListPage() {
               empty: 'Sin valor',
             }}
             resultSummary={
-              hasAny(filters)
-                ? `${filteredAll.length} de ${mockClients.length} clientes`
-                : null
+              hasAny(filters) ? `${filteredAll.length} de ${mockClients.length} clientes` : null
             }
           />
         </FiltersBar>
@@ -421,10 +401,7 @@ function ClientsListPage() {
 function TransactionsListPage() {
   const [filters, setFilters] = useState<FilterValues>({})
 
-  const filteredAll = useMemo(
-    () => applyTxFilters(mockTransactions, filters),
-    [filters],
-  )
+  const filteredAll = useMemo(() => applyTxFilters(mockTransactions, filters), [filters])
 
   const handleFetch = useCallback(
     async ({ page, pageSize, search }: DataGridFetchParams) => {
@@ -453,11 +430,7 @@ function TransactionsListPage() {
         <PageHeader
           title="Transacciones"
           subtitle="Movimientos liquidados, pendientes y rechazados de todas las cuentas."
-          breadcrumb={[
-            { title: 'Inicio' },
-            { title: 'Operaciones' },
-            { title: 'Transacciones' },
-          ]}
+          breadcrumb={[{ title: 'Inicio' }, { title: 'Operaciones' }, { title: 'Transacciones' }]}
           actions={headerActions('Nueva operación')}
         />
         <FiltersBar>

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect, vi } from 'vite-plus/test'
 import { Filters } from './Filters'
 import type { FilterField, FilterFieldOption, FilterValues } from './Filters.types'
 
@@ -11,7 +11,13 @@ const instruments: FilterFieldOption[] = [
   { label: 'YPFD — YPF S.A.', value: 'ypfd' },
 ]
 
-function Harness({ fields, onChange }: { fields: FilterField[]; onChange?: (v: FilterValues) => void }) {
+function Harness({
+  fields,
+  onChange,
+}: {
+  fields: FilterField[]
+  onChange?: (v: FilterValues) => void
+}) {
   const [value, setValue] = useState<FilterValues>({})
   return (
     <Filters

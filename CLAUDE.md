@@ -14,17 +14,27 @@ Node `>=22` (`.nvmrc` pins `22`). Build target ESM + CJS via `tsup`.
 npm run storybook        # dev: Storybook on port 6006 (primary visual workbench)
 npm run build            # produce dist/ — ESM, CJS, and .d.ts/.d.cts via tsup
 npm run dev              # tsup --watch
-npm test                 # vitest run (jsdom)
-npm run test:watch       # vitest watch
-npm run test:coverage    # vitest with v8 coverage
-npm run lint             # eslint src/
-npm run format           # prettier --write .
+npm test                 # vp test run (Vitest, jsdom)
+npm run test:watch       # vp test (watch)
+npm run test:coverage    # vp test run with v8 coverage
+npm run lint             # vp lint (Oxlint)
+npm run format           # vp fmt (Oxfmt, rewrites files)
+npm run verify           # vp check — format check + lint in one pass; CI runs this
 npm run build-storybook  # static build into storybook-static/
 npm run size             # size-limit (index.js ≤ 25 kB, theme.js ≤ 5 kB)
 npm run changeset        # add a changeset (required for any user-visible change)
 ```
 
-Run a single test file: `npx vitest run path/to/file.test.tsx`. Filter by name: `npx vitest run -t "pattern"`.
+Run a single test file: `npm test -- path/to/file.test.tsx`. Filter by name: `npm test -- -t "pattern"`.
+
+### Toolchain
+
+Tooling is **Vite+** (`vite-plus`, CLI `vp`): one dependency that provides Vitest, Oxlint and Oxfmt. There is no ESLint or Prettier. Everything is configured in `vite.config.ts`; the lint rules live in `lint.config.ts`. Tests import from `vite-plus/test`, not `vitest` (enforced by a lint rule).
+
+- `vite` is aliased to `@voidzero-dev/vite-plus-core` through `overrides` in `package.json`. Keep the `vite` devDependency and the override in sync with the version `vite-plus` depends on.
+- The library build stays on `tsup`. `vp pack` was evaluated and rejected: its CJS bundle fails to load in Node because of the `styled-components` default-import interop.
+- TypeScript is pinned to `~6.0`. TypeScript 7.0 does not ship the compiler JS API that the `tsup` declaration build and Storybook's docgen plugin need.
+- Use npm 11 or newer when changing dependencies (`npx npm@11 install ...`). npm 10 crashes while resolving this tree (`Cannot read properties of null (reading 'edgesOut')`); `npm ci` works on both.
 
 ## Public API surface
 
@@ -73,7 +83,7 @@ Storybook is the visual spec and the dev workbench (no app harness in this repo)
 
 ### Tests
 
-Vitest + jsdom + Testing Library. `src/test-setup.ts` only loads `@testing-library/jest-dom`. Tests are excluded from the build (`tsconfig.json#exclude`).
+Vitest (via Vite+) + jsdom + Testing Library. `src/test-setup.ts` loads `@testing-library/jest-dom` and polyfills the browser APIs jsdom lacks. Tests are excluded from the build (`tsconfig.json#exclude`).
 
 ## Release flow (Changesets)
 
@@ -81,5 +91,5 @@ Releases are automated via Changesets and GitHub Actions (`.github/workflows/rel
 
 ## Style
 
-- Prettier: no semicolons, single quotes, trailing commas all, width 100, 2 spaces (`.prettierrc`).
-- ESLint: `react/react-in-jsx-scope` off, `react-hooks/exhaustive-deps` warns, unused vars allowed if prefixed `_`.
+- Oxfmt: no semicolons, single quotes, trailing commas all, width 100, 2 spaces (`fmt` block in `vite.config.ts`).
+- Oxlint: `react/exhaustive-deps` warns, unused vars allowed if prefixed `_` (`lint.config.ts`). `react/set-state-in-effect` and `react/refs` are warnings until the affected components are reworked.

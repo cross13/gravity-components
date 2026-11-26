@@ -1,13 +1,7 @@
 import { useState, useCallback } from 'react'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import type { SidebarProps } from './Sidebar.types'
-import {
-  CollapseTrigger,
-  LogoRow,
-  MenuWrap,
-  StyledMenu,
-  StyledSider,
-} from './Sidebar.styles'
+import { CollapseTrigger, LogoRow, MenuWrap, StyledMenu, StyledSider } from './Sidebar.styles'
 
 export function Sidebar({
   items,
@@ -43,9 +37,7 @@ export function Sidebar({
       theme="light"
       style={style}
     >
-      <LogoRow $collapsed={collapsed}>
-        {collapsed ? collapsedLogo ?? logo : logo}
-      </LogoRow>
+      <LogoRow $collapsed={collapsed}>{collapsed ? (collapsedLogo ?? logo) : logo}</LogoRow>
 
       <MenuWrap>
         <StyledMenu

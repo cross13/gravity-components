@@ -37,8 +37,8 @@ jobs:
       - name: Install
         run: npm ci
 
-      - name: Lint
-        run: npm run lint
+      - name: Format check and lint
+        run: npm run verify
 
       - name: Test
         run: npm run test

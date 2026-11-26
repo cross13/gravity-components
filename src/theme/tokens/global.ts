@@ -24,17 +24,14 @@ export const defaultTokens: GravityTokens = {
   colorError: '#E62626',
   colorInfo: '#0077FF',
   borderRadius: 8,
-  fontFamily:
-    "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', sans-serif",
+  fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', sans-serif",
   fontSize: 14,
   colorBgContainer: '#FFFFFF',
   colorBgLayout: '#F0F3F7',
   colorTextBase: '#0D1B2A',
   colorBorder: '#D5DCE5',
-  boxShadow:
-    '0 1px 3px rgba(0, 25, 51, 0.05), 0 0 0 1px rgba(0, 25, 51, 0.03)',
-  boxShadowSecondary:
-    '0 8px 24px -4px rgba(0, 25, 51, 0.12), 0 0 0 1px rgba(0, 25, 51, 0.03)',
+  boxShadow: '0 1px 3px rgba(0, 25, 51, 0.05), 0 0 0 1px rgba(0, 25, 51, 0.03)',
+  boxShadowSecondary: '0 8px 24px -4px rgba(0, 25, 51, 0.12), 0 0 0 1px rgba(0, 25, 51, 0.03)',
   controlHeight: 32,
   lineWidth: 1,
 }

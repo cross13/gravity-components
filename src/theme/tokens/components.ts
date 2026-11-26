@@ -66,8 +66,7 @@ export const componentTokens = {
   },
   Card: {
     borderRadiusLG: 12,
-    boxShadow:
-      '0 1px 3px rgba(0, 25, 51, 0.05), 0 0 0 1px rgba(0, 25, 51, 0.03)',
+    boxShadow: '0 1px 3px rgba(0, 25, 51, 0.05), 0 0 0 1px rgba(0, 25, 51, 0.03)',
     headerFontSize: 15,
     paddingLG: 20,
   },

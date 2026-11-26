@@ -4,11 +4,7 @@ import { Button } from 'antd'
 import type { UploadProps, DraggerProps } from './Upload.types'
 import type { UploadFile, RcFile } from 'antd/es/upload'
 
-function validateFile(
-  file: RcFile,
-  accept?: string,
-  maxSize?: number,
-): string | null {
+function validateFile(file: RcFile, accept?: string, maxSize?: number): string | null {
   if (accept) {
     const acceptedTypes = accept.split(',').map((t) => t.trim())
     const fileExtension = `.${file.name.split('.').pop()?.toLowerCase()}`
@@ -53,15 +49,8 @@ export function Upload({
   }
 
   return (
-    <AntUpload
-      accept={accept}
-      beforeUpload={beforeUpload}
-      onChange={handleChange}
-      {...props}
-    >
-      {children ?? (
-        <Button icon={<UploadOutlined />}>Click to Upload</Button>
-      )}
+    <AntUpload accept={accept} beforeUpload={beforeUpload} onChange={handleChange} {...props}>
+      {children ?? <Button icon={<UploadOutlined />}>Click to Upload</Button>}
     </AntUpload>
   )
 }

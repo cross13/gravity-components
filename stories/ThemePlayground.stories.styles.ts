@@ -134,7 +134,9 @@ export const EditorSidebar = styled.div`
   top: 0;
   max-height: 100vh;
   overflow-y: auto;
-  box-shadow: 0 1px 3px rgba(0, 25, 51, 0.05), 0 0 0 1px rgba(0, 25, 51, 0.03);
+  box-shadow:
+    0 1px 3px rgba(0, 25, 51, 0.05),
+    0 0 0 1px rgba(0, 25, 51, 0.03);
 `
 
 export const EditorHeader = styled.div`

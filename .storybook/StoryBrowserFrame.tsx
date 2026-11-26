@@ -40,28 +40,14 @@ function LockIcon() {
 /**
  * Embeds story content in a lightweight “browser window” chrome (similar to doc/code preview frames).
  */
-export function StoryBrowserFrame({
-  title,
-  path,
-  fullscreen,
-  children,
-}: StoryBrowserFrameProps) {
+export function StoryBrowserFrame({ title, path, fullscreen, children }: StoryBrowserFrameProps) {
   return (
     <FrameShell $fullscreen={fullscreen}>
       <TitleBar>
         <TrafficLights>
-          <TrafficDot
-            $color={chrome.dotClose}
-            $shadow="inset 0 0 0 0.5px rgba(0,0,0,0.12)"
-          />
-          <TrafficDot
-            $color={chrome.dotMin}
-            $shadow="inset 0 0 0 0.5px rgba(0,0,0,0.08)"
-          />
-          <TrafficDot
-            $color={chrome.dotMax}
-            $shadow="inset 0 0 0 0.5px rgba(0,0,0,0.08)"
-          />
+          <TrafficDot $color={chrome.dotClose} $shadow="inset 0 0 0 0.5px rgba(0,0,0,0.12)" />
+          <TrafficDot $color={chrome.dotMin} $shadow="inset 0 0 0 0.5px rgba(0,0,0,0.08)" />
+          <TrafficDot $color={chrome.dotMax} $shadow="inset 0 0 0 0.5px rgba(0,0,0,0.08)" />
         </TrafficLights>
         <WindowTitle title={title}>{title}</WindowTitle>
       </TitleBar>
